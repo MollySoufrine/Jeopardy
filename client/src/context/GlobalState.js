@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const GameContext = createContext(initialState);
-const GameContextProvider = ({ children }) => {
+export const GameContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
   function updatePlayerName(id) {
     dispatch({
@@ -23,10 +23,10 @@ const GameContextProvider = ({ children }) => {
     });
   }
 
-  function updateQuestionModal(questionID) {
+  function updateQuestionModal(id) {
     dispatch({
       type: "QUESTION_ANSWERED",
-      payload: questionID,
+      payload: id,
     });
   }
 
@@ -37,6 +37,9 @@ const GameContextProvider = ({ children }) => {
         playerName: state.playerName,
         time: state.time,
         questions: state.questions,
+        updatePlayerName,
+        updateScore,
+        updateQuestionModal,
       }}
     >
       {children}
