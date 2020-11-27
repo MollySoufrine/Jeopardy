@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const jeopardyInfo = new Schema({
+const jeopardyInfoSchema = new Schema({
   questionInfo: [
     {
       question: { type: String },
@@ -18,4 +18,5 @@ const jeopardyInfo = new Schema({
   ],
 });
 
-const JeopardyInfo = mongoose.model("JeopardyInfo", jeopardyInfo);
+const JeopardyInfo = mongoose.model("JeopardyInfo", jeopardyInfoSchema);
+module.exports = JeopardyInfo;
