@@ -10,5 +10,20 @@ export default (state, action) => {
         ...state,
         score: [action.payload, ...state.score],
       };
+    case "START_TIME":
+      return {
+        ...state,
+        timerOn: true,
+        timerTime: state.timerTime,
+        timerStart: Date.now() - state.timerTime,
+        timerId: action.timerId,
+      };
+    case "STOP_TIME":
+      clearInterval(state.timer);
+      return {
+        ...state,
+      };
+    case "RESET_TIME":
+      return {};
   }
 };

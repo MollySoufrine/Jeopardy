@@ -1,24 +1,36 @@
-useEffect(() => {
-  // console.log(playerName);
-  if (timeLeft === 0) {
-    // alert("TIMES UP");
-    setTimeLeft(null);
-    // setShowModal(false);
-  }
+import React, { useState } from "react";
 
-  // exit early when we reach 0
-  if (!timeLeft) return;
+export const GameTimer = () => {
+  const [timeLeft, setTimeLeft];
 
-  // save intervalId to clear the interval when the
-  // component re-renders
-  const intervalId = setInterval(() => {
-    setTimeLeft(timeLeft - 1);
-  }, 1000);
+  useEffect(() => {
+    // console.log(playerName);
+    if (timeLeft === 0) {
+      // alert("TIMES UP");
+      setTimeLeft(null);
+      // setShowModal(false);
+    }
 
-  // clear interval on re-render to avoid memory leaks
-  return () => clearInterval(intervalId);
-  // add timeLeft as a dependency to re-rerun the effect
-  // when we update it
-}, [timeLeft]);
+    // exit early when we reach 0
+    if (!timeLeft) return;
 
-//storing this here for now for the count down time
+    // save intervalId to clear the interval when the
+    // component re-renders
+    const intervalId = setInterval(() => {
+      setTimeLeft(timeLeft - 1);
+    }, 1000);
+
+    // clear interval on re-render to avoid memory leaks
+    return () => clearInterval(intervalId);
+    // add timeLeft as a dependency to re-rerun the effect
+    // when we update it
+  }, [timeLeft]);
+
+  //storing this here for now for the count down time
+
+  return (
+    <div>
+      <p id="timer">{timeLeft}</p>
+    </div>
+  );
+};

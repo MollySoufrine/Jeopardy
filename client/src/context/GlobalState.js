@@ -1,11 +1,10 @@
-import React, { createContext, useState } from "react";
+import React, { createContext } from "react";
 import AppReducer from "./AppReducer";
 
 const initialState = {
   questions: [],
   score: [],
   playerName: [],
-  time: 15,
 };
 
 export const GameContext = createContext(initialState);
@@ -23,12 +22,7 @@ const GameContextProvider = ({ children }) => {
       payload: score,
     });
   }
-  function updateTime(timer) {
-    dispatch({
-      type: "UPDATE_TIME",
-      payload: timer,
-    });
-  }
+
   function updateQuestionModal(questionID) {
     dispatch({
       type: "QUESTION_ANSWERED",
