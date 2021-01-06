@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
-export const GameTimer = () => {
-  const [timeLeft, setTimeLeft];
+function Timer() {
+  const [timeLeft, setTimeLeft] = useState(null);
 
   useEffect(() => {
     // console.log(playerName);
@@ -26,11 +26,5 @@ export const GameTimer = () => {
     // when we update it
   }, [timeLeft]);
 
-  //storing this here for now for the count down time
-
-  return (
-    <div>
-      <p id="timer">{timeLeft}</p>
-    </div>
-  );
-};
+  return <div></div>;
+}

@@ -1,0 +1,154 @@
+[
+  {
+    "title": "sports",
+    "question": "He was featured on the September 22, 1947 cover of Time with the caption 'He and the boss took a chance.'",
+    "correctAnswer": "Jackie Robinson",
+    "choices": ["Jackie Robinson", "Derek Jeter", "Babe Ruth", "Cy Young"],
+    "score": 100,
+    "wasClicked": false,
+    "id": 1
+  },
+  {
+    "question": "The rock and roll hall of fame is located in which U.S state?",
+    "correctAnswer": "Ohio",
+    "choices": ["Idaho", "Colorado", "New York", "Ohio"],
+    "score": 100,
+    "wasClicked": false,
+    "id": 2
+  },
+  {
+    "question": "This famous quote is from what 80's movie?'Taste the soup, the soup tastes good?'",
+    "correctAnswer": "Coming to America",
+    "choices": [
+      "The Sandlot",
+      "Coming to America",
+      "The Breakfast Club",
+      "Rain Man"
+    ],
+    "score": 100,
+    "wasClicked": false,
+    "id": 3
+  },
+  {
+    "question": "How many years did the 100 years war last?",
+    "correctAnswer": "116",
+    "choices": ["100", "116", "112", "101"],
+    "score": 100,
+    "wasClicked": false,
+    "id": 4
+  },
+  {
+    "title": "sports",
+    "question": "How high are the NFL goal posts?",
+    "correctAnswer": "10 feet",
+    "score": 300,
+    "choices": ["15 feet", "20 feet", "12 feet", "10 feet"],
+    "wasClicked": false,
+    "id": 5
+  },
+  {
+    "question": "Who won American Idol season 1?",
+    "correctAnswer": "Kelly Clarkson",
+    "choices": [
+      "Ruben Studdard",
+      "Carrie Underwood",
+      "Kelly Clarkson",
+      "Simon Cowell"
+    ],
+    "score": 300,
+    "wasClicked": false,
+    "id": 6
+  },
+  {
+    "question": "In the James Bond movies, what is the name of Bonds assistant?",
+    "correctAnswer": "Miss Money Penny",
+    "choices": ["Miss Penny", "Q", "Miss Money Penny", "MUM"],
+    "score": 300,
+    "wasClicked": false,
+    "id": 7
+  },
+  {
+    "question": "One of the ancient wonders of the world, the 'Hanging Gardens', was found in what city?",
+    "correctAnswer": "Babylon",
+    "choices": ["Babylon", "Greece", "Rome", "Alexandria"],
+    "score": 300,
+    "wasClicked": false,
+    "id": 8
+  },
+  {
+    "title": "sports",
+    "question": "Who was the first player to win consecutive NBA MVP awards since Micheal Jordan did in 1991 and 1992?",
+    "correctAnswer": "Tim Duncan",
+    "choices": ["Magic Johnson", "Lebron James", "Kobe Bryant", "Tim Duncan"],
+    "score": 600,
+    "wasClicked": false,
+    "id": 9
+  },
+  {
+    "question": "R.Kelly's unforgettable 'I Believe I Can Fly, was originally featured on the soundtrack of which movie?",
+    "correctAnswer": "Space Jam",
+    "choices": ["Like Mike", "Home Alone", "The Truman Show", "Space Jam"],
+    "score": 600,
+    "wasClicked": false,
+    "id": 10
+  },
+  {
+    "question": "Which movie did actor Tom Hanks score his first Academy Awards nomination?",
+    "correctAnswer": "Big",
+    "choices": ["Saving Private Ryan", "Forrest Gump", "Big", "Cast Away"],
+    "score": 600,
+    "wasClicked": false,
+    "id": 11
+  },
+  {
+    "question": "In 1945 scientists in this state witnessed the detonation of the world's first atomic bomb?",
+    "correctAnswer": "The Red Cross",
+    "choices": ["The Red Cross", "Derek Jeter", "Babe Ruth", "Cy Young"],
+    "score": 600,
+    "wasClicked": false,
+    "id": 12
+  },
+  {
+    "title": "sports",
+    "question": "What team hired Matt Patricia as their head coach?",
+    "correctAnswer": "Detroit Lions",
+    "choices": [
+      "Pittsburg Steelers",
+      "New York Jets",
+      "Chicago Bears",
+      "Detroit Lions"
+    ],
+    "score": 1000,
+    "wasClicked": false,
+    "id": 13
+  },
+  {
+    "question": "International music sensation ABBA originated from which European Country?",
+    "correctAnswer": "Sweden",
+    "choices": ["Switzerland", "Sweden", "Norway", "Finland"],
+    "score": 1000,
+    "wasClicked": false,
+    "id": 14
+  },
+  {
+    "question": "What 1927 musical was the first 'talkie'?",
+    "correctAnswer": "The Jazz Singer",
+    "choices": [
+      "Golden Dawn",
+      "Sally",
+      "Show Girl in Hollywood",
+      "The Jazz Singer"
+    ],
+    "score": 1000,
+    "wasClicked": false,
+    "id": 15
+  },
+  {
+    "question": "How many days was William Harrison president of the United States?",
+    "correctAnswer": "32",
+    "choices": ["30", "32", "28", "31"],
+    "score": 1000,
+    "wasClicked": false,
+    "id": 16
+  }
+]

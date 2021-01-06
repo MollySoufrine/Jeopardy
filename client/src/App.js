@@ -1,13 +1,22 @@
-import React, { Component } from "react";
-import { Game } from "./pages/Game";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Buttons } from "./components/Buttons/index";
+import Game from "./pages/Game";
 import { Home } from "./pages/Home";
-import { Higscores } from "./pages/Highscores";
-import { GameContextProvider } from "./context/GlobalState";
+import "./index.css";
 
-class App extends Component {
-  render() {
-    return <GameContextProvider></GameContextProvider>;
-  }
+function App() {
+  return (
+    <Router>
+      <div className="app">
+        <Buttons />
+
+        <Route exact path="/" component={Home} />
+
+        <Route exact path="/game" component={Game} />
+      </div>
+    </Router>
+  );
 }
 
 export default App;

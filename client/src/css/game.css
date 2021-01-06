@@ -1,0 +1,49 @@
+.game-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border: solid 0.5rem;
+  border-color: black;
+  width: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 80px;
+}
+
+.game-button {
+  background-color: darkblue;
+  padding: 15px;
+  color: #fff;
+  border: black solid 2px;
+  height: 125px;
+}
+
+.game-button:hover {
+  transform: scale(1.2);
+  background-color: darkblue;
+}
+
+.card-body {
+  text-align: center;
+  border: solid 2px;
+  border-color: black;
+}
+
+.title-category {
+  color: white;
+  background-color: black;
+  height: 100px;
+}
+
+button {
+  font-size: 3rem;
+  color: white;
+  background-color: black;
+  /*height: 100px;*/
+}
+
+div.card-group {
+  margin: 10px;
+}
