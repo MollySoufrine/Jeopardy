@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Buttons } from "./components/Buttons/index";
 import Game from "./pages/Game";
 import { Home } from "./pages/Home";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 function App() {

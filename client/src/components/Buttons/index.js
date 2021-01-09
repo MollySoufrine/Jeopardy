@@ -4,7 +4,7 @@ import "./index.css";
 
 export const Buttons = () => {
   return (
-    <div class="container buttons-container">
+    <div className="container buttons-container">
       <Link className="btn" to="/">
         Home
       </Link>

@@ -1,6 +1,7 @@
 .app {
   display: inline-block;
   margin-top: 1rem;
+  width: 80%;
 }
 
 .btn-giveup {
