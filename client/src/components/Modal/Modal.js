@@ -5,6 +5,10 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 function JeopardyModal(props) {
+  if (props.question == null) {
+    return null
+  }
+
   console.log(props);
   console.log(props.question);
   console.log(props.question.category);
@@ -25,6 +29,7 @@ function JeopardyModal(props) {
             ></h5>
           </Modal.Header>
           <Modal.Body>
+            {JSON.stringify(props.question)}
             {/* close the modal out if user selects correct or wrong answer...will also have this happen if alotted time for question runs out as well */}
             {/* {props.question.choices.map((answer) => (
               <Button
