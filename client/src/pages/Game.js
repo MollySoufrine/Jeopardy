@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 // import { useHistory } from "react-router-dom";
 import questions from "../Json/questions.json";
 import "../css/game.css";
@@ -21,18 +21,14 @@ function Game() {
     return uniqueCat;
   }
 
-  function filterCurrQuestion(question) {
-    // console.log(currQuestionID);
-    questions.filter((question) => question.id === currQuestionID);
-    return question.id;
-  }
-
   const handleQuestionChange = function (questionID) {
     setCurrQuestion(questionID);
     setShow(!show);
   };
 
-  console.log(questions.filter(filterCurrQuestion)[0]);
+  // console.log(questions.filter(filterCurrQuestion)[0]);
+
+  const question = questions.find(question => question.id === currQuestionID)
   return (
     <div className="wrapper">
       <div className="game-wrapper">
@@ -48,7 +44,7 @@ function Game() {
           </div>
         </div>
       </div>
-      <JeopardyModal show={show} question={filterCurrQuestion} />
+      <JeopardyModal show={show} onClose={() => setShow(false)} question={question} />
       {/* investigate filter or question id...failing because cant get question */}
     </div>
   );
