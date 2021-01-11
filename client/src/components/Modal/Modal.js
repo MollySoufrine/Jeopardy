@@ -1,10 +1,14 @@
 //Modal needs to know about QuestionButton and/or get data from question button
-import React from "react";
+import React, {useState} from "react";
 import Modal from "react-bootstrap/Modal";
 
 import Button from "react-bootstrap/Button";
+import Timer from "../Timer";
 
 function JeopardyModal(props) {
+  // Flag to change contents of modal after timer expiry
+  const [isExpired, setIsExpired] = useState(false)
+
   if (props.question == null) {
     return null
   }
@@ -27,9 +31,11 @@ function JeopardyModal(props) {
               className="modal-title"
               id={"categoryModal-" + props.question.category}
             ></h5>
+            <button onClick={props.onClose}>Close</button>
           </Modal.Header>
           <Modal.Body>
-            {JSON.stringify(props.question)}
+            <Timer onTimeEnd={() => setIsExpired(true)} />
+            {isExpired ? 'Oops, no more time' : JSON.stringify(props.question)}
             {/* close the modal out if user selects correct or wrong answer...will also have this happen if alotted time for question runs out as well */}
             {/* {props.question.choices.map((answer) => (
               <Button

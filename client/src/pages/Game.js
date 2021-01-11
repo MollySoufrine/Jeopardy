@@ -44,7 +44,7 @@ function Game() {
           </div>
         </div>
       </div>
-      <JeopardyModal show={show} question={question} />
+      <JeopardyModal show={show} onClose={() => setShow(false)} question={question} />
       {/* investigate filter or question id...failing because cant get question */}
     </div>
   );
