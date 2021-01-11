@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 // import { useHistory } from "react-router-dom";
 import questions from "../Json/questions.json";
 import "../css/game.css";
@@ -28,7 +28,7 @@ function Game() {
 
   // console.log(questions.filter(filterCurrQuestion)[0]);
 
-  const question = questions.find(question => question.id === currQuestionID)
+  const question = questions.find((question) => question.id === currQuestionID);
   return (
     <div className="wrapper">
       <div className="game-wrapper">
@@ -44,7 +44,11 @@ function Game() {
           </div>
         </div>
       </div>
-      <JeopardyModal show={show} onClose={() => setShow(false)} question={question} />
+      <JeopardyModal
+        show={show}
+        onClose={() => setShow(false)}
+        question={question}
+      />
       {/* investigate filter or question id...failing because cant get question */}
     </div>
   );

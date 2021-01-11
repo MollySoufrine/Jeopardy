@@ -1,5 +1,5 @@
 //Modal needs to know about QuestionButton and/or get data from question button
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 
 import Button from "react-bootstrap/Button";
@@ -7,15 +7,11 @@ import Timer from "../Timer";
 
 function JeopardyModal(props) {
   // Flag to change contents of modal after timer expiry
-  const [isExpired, setIsExpired] = useState(false)
+  const [isExpired, setIsExpired] = useState(false);
 
   if (props.question == null) {
-    return null
+    return null;
   }
-
-  console.log(props);
-  console.log(props.question);
-  console.log(props.question.category);
 
   return (
     <>
@@ -30,14 +26,20 @@ function JeopardyModal(props) {
             <h5
               className="modal-title"
               id={"categoryModal-" + props.question.category}
-            ></h5>
+            >
+              {" "}
+              <Timer onTimeEnd={() => setIsExpired(true)} />
+              {isExpired
+                ? "Oops, no more time"
+                : JSON.stringify(props.question.question)}
+            </h5>
             <button onClick={props.onClose}>Close</button>
           </Modal.Header>
           <Modal.Body>
-            <Timer onTimeEnd={() => setIsExpired(true)} />
-            {isExpired ? 'Oops, no more time' : JSON.stringify(props.question)}
+            {/* <Timer onTimeEnd={() => setIsExpired(true)} />
+            {isExpired ? 'Oops, no more time' : JSON.stringify(props.question)} */}
             {/* close the modal out if user selects correct or wrong answer...will also have this happen if alotted time for question runs out as well */}
-            {/* {props.question.choices.map((answer) => (
+            {props.question.choices.map((answer) => (
               <Button
                 className="answer-button"
                 key={answer.correctAnswer}
@@ -58,7 +60,6 @@ function JeopardyModal(props) {
                 onClick={(event) => {
                   console.log(event);
                   //counts the questions, once all have been selected it would then push the suer to the highscores page/ end the game
-
                   //i want to change it to just end the game.
                   //   setCount(questionCount + 1);
                   //   if (questionCount === questions.length) {
@@ -69,9 +70,9 @@ function JeopardyModal(props) {
                   //so if the variable is data-target, after clicking it you could check it and change to data-bs-target
                 }}
               >
-                {answer}
+                {JSON.stringify(answer)}
               </Button>
-            ))} */}
+            ))}
           </Modal.Body>
           <Modal.Footer></Modal.Footer>
         </Modal.Dialog>

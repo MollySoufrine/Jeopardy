@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Timer(props) {
   // remember -- state changes in react don't happen immediately
@@ -9,8 +9,8 @@ export default function Timer(props) {
   useEffect(() => {
     // console.log(playerName);
     if (timeLeft === 0) {
-      props.onTimeEnd()
-      return
+      props.onTimeEnd();
+      return;
     }
 
     // save intervalId to clear the interval when the
