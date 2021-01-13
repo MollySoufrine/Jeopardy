@@ -4,14 +4,15 @@ import questions from "../Json/questions.json";
 import "../css/game.css";
 import Column from "../components/Column/Column";
 import JeopardyModal from "../components/Modal/Modal";
-// import Timer from "../components/Timer/Timer";
 
 function Game() {
   const [currQuestionID, setCurrQuestion] = useState(questions[0].id);
   //game should be in charge of keeping track of score
   const [show, setShow] = useState(false);
 
-  //
+  //get players name from local storage
+  const playerName = localStorage.getItem("playerName");
+
   function getUniqueCategories(questions) {
     //extract categories from list of questions
     const categories = questions.map((question) => question.category);
@@ -39,7 +40,8 @@ function Game() {
       <div className="card-group">
         <div className="card">
           <div className="card-body">
-            <h5 className="card-title">player</h5>
+            <h5 className="card-title">{playerName}</h5>
+
             <p className="card-text">score</p>
           </div>
         </div>

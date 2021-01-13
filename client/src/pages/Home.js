@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 
 export const Home = () => {
+  //set localstorage for the players name when they click submit
+  const [value, setValue] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("playerName", value);
+  }, [value]);
+  const onChange = (e) => setValue(e.target.value);
+
   return (
     <div className="readyBanner">
       <h2>Are you Ready to Play Jeopardy?</h2>
@@ -13,6 +21,8 @@ export const Home = () => {
 
       <div>
         <input
+          onChange={onChange}
+          value={value}
           className="insertPlayerName"
           type="input"
           placeholder=" enter player name"

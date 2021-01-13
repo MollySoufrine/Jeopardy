@@ -6,8 +6,9 @@ import Button from "react-bootstrap/Button";
 import Timer from "../Timer";
 
 function JeopardyModal(props) {
-  // Flag to change contents of modal after timer expiry
+  // Flag to change contents of modal after timer expires
   const [isExpired, setIsExpired] = useState(false);
+  //Detect which answer was selected and add to score...connect to game.js
 
   if (props.question == null) {
     return null;
