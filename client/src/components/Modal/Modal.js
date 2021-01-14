@@ -47,6 +47,7 @@ function JeopardyModal(props) {
                 onClick={() => {
                   if (answer === props.question.correctAnswer) {
                     props.onClose();
+
                     alert("Correct!");
                   } else {
                     props.onClose();

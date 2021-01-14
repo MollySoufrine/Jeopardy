@@ -3,13 +3,14 @@ import Button from "react-bootstrap/Button";
 
 function QuestionButton(props) {
   const handleClick = () => {
-    props.onQuestionChange(props.question.id);
+    props.onQuestionChange();
+    props.onDisabled();
   };
 
   return (
     <Button
       className="game-button"
-      key={props.question.id}
+      // key={props.question.id}
       onClick={handleClick}
     >
       {/* {console.log(question)}

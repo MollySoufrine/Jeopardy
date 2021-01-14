@@ -13,6 +13,9 @@ function Game() {
   //get players name from local storage
   const playerName = localStorage.getItem("playerName");
 
+  //check if a question was answered, set button to dsiabled
+  const [isDisabled, setIsDisabled] = useState(false);
+
   function getUniqueCategories(questions) {
     //extract categories from list of questions
     const categories = questions.map((question) => question.category);
@@ -24,6 +27,7 @@ function Game() {
 
   const handleQuestionChange = function (questionID) {
     setCurrQuestion(questionID);
+
     setShow(!show);
   };
 
@@ -34,7 +38,11 @@ function Game() {
     <div className="wrapper">
       <div className="game-wrapper">
         {getUniqueCategories(questions).map((category) => (
-          <Column category={category} onQuestionChange={handleQuestionChange} />
+          <Column
+            category={category}
+            onQuestionChange={handleQuestionChange}
+            disable={isDisabled}
+          />
         ))}
       </div>
       <div className="card-group">
