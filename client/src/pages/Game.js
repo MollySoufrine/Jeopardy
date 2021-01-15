@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 // import { useHistory } from "react-router-dom";
 import questions from "../Json/questions.json";
 import "../css/game.css";
@@ -6,15 +6,12 @@ import Column from "../components/Column/Column";
 import JeopardyModal from "../components/Modal/Modal";
 
 function Game() {
-  const [currQuestionID, setCurrQuestion] = useState(questions[0].id);
-  //game should be in charge of keeping track of score
-  const [show, setShow] = useState(false);
+  const [currQuestionID, setCurrQuestion] = useState(undefined);
 
   //get players name from local storage
   const playerName = localStorage.getItem("playerName");
 
-  //check if a question was answered, set button to dsiabled
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [answeredQuestions, setAnsweredQuestions] = useState({})
 
   function getUniqueCategories(questions) {
     //extract categories from list of questions
@@ -28,20 +25,27 @@ function Game() {
   const handleQuestionChange = function (questionID) {
     setCurrQuestion(questionID);
 
-    setShow(!show);
+    // Update collection of questions that have been answered
+    setAnsweredQuestions(prevAnsweredQuestions => ({
+      ...prevAnsweredQuestions,
+      [questionID]: true
+    }))
   };
 
   // console.log(questions.filter(filterCurrQuestion)[0]);
 
   const question = questions.find((question) => question.id === currQuestionID);
+  console.log(question)
+  console.log(currQuestionID)
   return (
     <div className="wrapper">
       <div className="game-wrapper">
         {getUniqueCategories(questions).map((category) => (
           <Column
+            key={category}
             category={category}
             onQuestionChange={handleQuestionChange}
-            disable={isDisabled}
+            answeredQuestions={answeredQuestions}
           />
         ))}
       </div>
@@ -55,8 +59,8 @@ function Game() {
         </div>
       </div>
       <JeopardyModal
-        show={show}
-        onClose={() => setShow(false)}
+        show={currQuestionID != null}
+        onClose={() => setCurrQuestion(undefined)}
         question={question}
       />
       {/* investigate filter or question id...failing because cant get question */}
