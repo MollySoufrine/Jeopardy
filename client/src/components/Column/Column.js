@@ -9,9 +9,7 @@ import Button from "react-bootstrap/Button";
 function Column({
   onQuestionChange,
   category,
-  currQuestionID,
-  setIsDisabled,
-  isDisabled,
+  answeredQuestions
 }) {
   // const handleQuestionChange = (questionID) =>
   //   props.onQuestionChange(questionID);
@@ -24,13 +22,10 @@ function Column({
 
       {questions
         .filter((question) => question.category === category)
-        .map((question, index) => (
+        .map((question) => (
           <QuestionButton
-            disabled={isDisabled}
-            key={currQuestionID}
-            onDisabled={() => {
-              setIsDisabled(!isDisabled);
-            }}
+            disabled={answeredQuestions[question.id]}
+            key={question.id}
             question={question}
             onQuestionChange={onQuestionChange}
           />
