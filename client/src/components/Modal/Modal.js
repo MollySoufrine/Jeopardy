@@ -1,5 +1,5 @@
 //Modal needs to know about QuestionButton and/or get data from question button
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Timer from "../Timer";
@@ -9,11 +9,14 @@ function JeopardyModal(props) {
   const [isExpired, setIsExpired] = useState(false);
 
   // Reset modal state whenever it is reopened
+  //w/o useEffect, once the modal expires once, the modal’s isExpired
+  //state will be set to true and will never change back to false, which then
+  //when a user selects another question, no modal would appear
   useEffect(() => {
     if (props.show) {
-      setIsExpired(false)
+      setIsExpired(false);
     }
-  }, [props.show])
+  }, [props.show]);
 
   if (props.question == null) {
     return null;

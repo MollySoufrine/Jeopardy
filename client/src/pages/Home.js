@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Button from "react-bootstrap/Button";
+
 import "./style.css";
 
 export const Home = () => {
@@ -27,9 +29,9 @@ export const Home = () => {
           type="input"
           placeholder=" enter player name"
         ></input>
-        <button className="submit" type="submit">
+        <Button className="submit" type="submit">
           submit
-        </button>
+        </Button>
       </div>
     </div>
   );
