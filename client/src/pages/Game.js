@@ -16,8 +16,6 @@ function Game() {
   //store collection of answered questions
   const [answeredQuestions, setAnsweredQuestions] = useState({});
 
-  // const [isHidden, setHidden] = useState(false);
-
   function getUniqueCategories(questions) {
     //extract categories from list of questions
     const categories = questions.map((question) => question.category);
@@ -29,11 +27,6 @@ function Game() {
 
   const isGameOver =
     Object.keys(answeredQuestions).length === Object.keys(questions).length;
-  const displayGameOver = () => {
-    if (isGameOver) {
-      return <GameOver />;
-    }
-  };
 
   const handleQuestionChange = function (questionID) {
     setCurrQuestion(questionID);
@@ -50,6 +43,8 @@ function Game() {
 
   return (
     <div className="wrapper">
+      {isGameOver === false && <Column /> && <JeopardyModal />}
+      {isGameOver === true && <GameOver />}
       <div className="game-wrapper">
         {getUniqueCategories(questions).map((category) => (
           <Column

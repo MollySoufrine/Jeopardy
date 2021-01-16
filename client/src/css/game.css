@@ -1,20 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Monofett&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=OpenSans&display=swap");
+
 .game-wrapper {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   border: solid 0.5rem;
   border-color: black;
-  height: 15rem;
+  height: 14.5rem;
   background-color: black;
+  font-family: "Open Sans";
+  width: 90%;
 }
 .wrapper {
   margin: 0 auto;
   padding-top: 1rem;
 }
 
+.button-category {
+  font-size: 3rem;
+  color: white;
+
+  width: 25%;
+}
+
 .game-button {
-  font-size: 0.9rem;
-  background-color: darkblue;
   padding: 0.3rem;
   margin: 0.2rem;
   color: #fff;
@@ -26,9 +36,7 @@
   transform: scale(1.2);
   background-color: darkblue;
 }
-.answer-button {
-  width: 100%;
-}
+
 .card-body {
   text-align: center;
   border: solid 2px;
@@ -50,4 +58,9 @@
 
 div.card-group {
   margin: 10px;
+}
+
+.game-over {
+  text-transform: capitalize;
+  font-family: "Monofett";
 }

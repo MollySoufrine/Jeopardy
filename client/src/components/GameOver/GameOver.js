@@ -3,14 +3,12 @@ import React from "react";
 
 import Button from "react-bootstrap/Button";
 
-function GameOver({ isGameOver }) {
-  //   const [isHidden, setHidden] = useState(false);
+function GameOver() {
   return (
-    <div>
-      GAME OVER
+    <div className="game-over">
+      <h1>GAME OVER</h1>
+      <br />
       <input
-        // onChange={onChange}
-        // value={value}
         className="insertScore"
         type="input"
         placeholder="enter score"

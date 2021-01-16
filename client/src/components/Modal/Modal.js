@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Timer from "../Timer";
+import "./index.css";
 
 function JeopardyModal(props) {
   // Flag to change contents of modal after timer expires
@@ -42,7 +43,9 @@ function JeopardyModal(props) {
                 ? "Oops, no more time"
                 : JSON.stringify(props.question.question)}
             </h5>
-            <Button onClick={props.onClose}>Close</Button>
+            <Button className="answer-button" onClick={props.onClose}>
+              Close
+            </Button>
           </Modal.Header>
           <Modal.Body>
             {/* <Timer onTimeEnd={() => setIsExpired(true)} />

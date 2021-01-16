@@ -1,14 +1,14 @@
 .buttons-container {
-  display: inline-block;
+  display: inline;
   max-width: 100%;
 }
-.btn {
+.link-btn {
   color: white;
   border-radius: 2rem;
   padding: 0.2rem;
-  margin: 0.2rem;
+  text-decoration: underline;
 }
-.btn:hover {
-  transform: scale(1.2);
+.link-btn:hover {
   background-color: rgb(141, 141, 231);
+  color: black;
 }

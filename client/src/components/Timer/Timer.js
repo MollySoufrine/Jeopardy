@@ -28,5 +28,5 @@ export default function Timer(props) {
     // when we update it
   }, [props, timeLeft]);
 
-  return <div>Time left: {String(timeLeft)}</div>;
+  return <div className="timer">Time left: {String(timeLeft)}</div>;
 }

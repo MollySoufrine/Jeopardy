@@ -4,20 +4,20 @@ import "./index.css";
 
 export const Buttons = () => {
   return (
-    <div className="container buttons-container">
-      <Link className="btn" to="/">
+    <div className="buttons-container">
+      <Link className="link-btn" to="/">
         Home
       </Link>
 
-      <Link to="/game" className="btn">
+      <Link to="/game" className="link-btn">
         Start Game!
       </Link>
 
-      <Link to="/highscores" className="btn">
+      <Link to="/highscores" className="link-btn">
         Scores
       </Link>
 
-      <Link to="/about" className="btn">
+      <Link to="/about" className="link-btn">
         About
       </Link>
     </div>
