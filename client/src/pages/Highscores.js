@@ -1,9 +1,11 @@
 import React from "react";
 
-function Highscores() {
+export const Highscores = () => {
   return (
     <div className="highscores">
-      <div></div>
+      <div>
+        <h1>High Scores</h1>
+      </div>
     </div>
   );
-}
+};
