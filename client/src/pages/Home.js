@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 
-import "./style.css";
+import "../css/style.css";
 
 export const Home = () => {
   //set localstorage for the players name when they click submit

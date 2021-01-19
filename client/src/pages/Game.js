@@ -2,9 +2,8 @@ import React, { useState } from "react";
 // import { useHistory } from "react-router-dom";
 import questions from "../Json/questions.json";
 import GameOver from "../components/GameOver/GameOver";
-import "./game.css";
+import "../css/game.css";
 import Column from "../components/Column/Column";
-
 import JeopardyModal from "../components/Modal/Modal";
 
 function Game() {
@@ -22,16 +21,14 @@ function Game() {
 
   //detect if the answer a user selected is correct
   const onAnswerClick = (e, answer) => {
-    console.log(answer === question.correctAnswer);
-    console.log(answer + "was clicked");
+    // console.log(answer === question.correctAnswer);
+    // console.log(answer + "was clicked");
     if (answer === question.correctAnswer) {
       setScore((prevScore) => prevScore + question.score);
-      // onClose();
       alert("Correct!");
     } else {
-      alert("Sorry! Wrong answer!");
-      // onClose();
       setScore((prevScore) => prevScore - question.score);
+      alert("Sorry! Wrong answer!");
     }
   };
 

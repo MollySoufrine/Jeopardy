@@ -4,8 +4,6 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Timer from "../Timer";
 
-import "./index.css";
-
 function JeopardyModal(props) {
   // Flag to change contents of modal after timer expires
   const [isExpired, setIsExpired] = useState(false);
@@ -55,6 +53,7 @@ function JeopardyModal(props) {
                 key={answer}
                 className="answer-button"
                 onClick={(e) => props.onAnswerClick(e, answer)}
+
                 //when you click an answer it will check whether it is correct or not
                 //if it is then add to the score, if not subtract from the score
               >
