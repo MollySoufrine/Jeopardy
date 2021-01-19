@@ -19,15 +19,20 @@ function Game() {
   //store collection of answered questions
   const [answeredQuestions, setAnsweredQuestions] = useState({});
 
+  //onClose function
+  const onClose = (e) => setCurrQuestion(undefined);
+
   //detect if the answer a user selected is correct
   const onAnswerClick = (e, answer) => {
     // console.log(answer === question.correctAnswer);
     // console.log(answer + "was clicked");
     if (answer === question.correctAnswer) {
       setScore((prevScore) => prevScore + question.score);
+      onClose();
       alert("Correct!");
     } else {
       setScore((prevScore) => prevScore - question.score);
+      onClose();
       alert("Sorry! Wrong answer!");
     }
   };
@@ -89,7 +94,7 @@ function Game() {
         //and will always be closed if no question is selected
         show={currQuestionID != null}
         //"when modal is closed, set game state as 'no question currently selected' "
-        onClose={() => setCurrQuestion(undefined)}
+        onClose={onClose}
         question={question}
       />
 
