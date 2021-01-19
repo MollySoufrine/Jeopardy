@@ -54,11 +54,10 @@ function JeopardyModal(props) {
               <Button
                 key={answer}
                 className="answer-button"
-                onClick={props.onAnswerClick}
+                onClick={(e) => props.onAnswerClick(e, answer)}
                 //when you click an answer it will check whether it is correct or not
                 //if it is then add to the score, if not subtract from the score
               >
-                {console.log(props.question.correctAnswer)}
                 {answer}
               </Button>
             ))}

@@ -21,7 +21,9 @@ function Game() {
   const [answeredQuestions, setAnsweredQuestions] = useState({});
 
   //detect if the answer a user selected is correct
-  const onAnswerClick = (answer) => {
+  const onAnswerClick = (e, answer) => {
+    console.log(answer === question.correctAnswer);
+    console.log(answer + "was clicked");
     if (answer === question.correctAnswer) {
       setScore((prevScore) => prevScore + question.score);
       // onClose();
