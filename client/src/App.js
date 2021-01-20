@@ -8,16 +8,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <Router>
-      <div className="app">
-        <Buttons />
+    <div className="gif-container">
+      <Router>
+        <div className="app">
+          <Buttons />
 
-        <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Home} />
 
-        <Route exact path="/game" component={Game} />
-        <Route exact path="/about" component={About} />
-      </div>
-    </Router>
+          <Route exact path="/game" component={Game} />
+          <Route exact path="/about" component={About} />
+        </div>
+      </Router>
+    </div>
   );
 }
 

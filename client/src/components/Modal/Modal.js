@@ -8,10 +8,31 @@ function JeopardyModal(props) {
   // Flag to change contents of modal after timer expires
   const [isExpired, setIsExpired] = useState(false);
 
-  // Reset modal state whenever it is reopened
-  //w/o useEffect, once the modal expires once, the modal’s isExpired
-  //state will be set to true and will never change back to false, which then
-  //when a user selects another question, no modal would appear
+  /*
+  detect if the answer a user selected is correct
+  keep this in modal, The game only cares about tracking overall score. 
+  This keep actual calculation for current question.answer in modal 
+  */
+  const onAnswerClick = (e, answer) => {
+    // console.log(answer === question.correctAnswer);
+    // console.log(answer + "was clicked");
+    if (answer === props.question.correctAnswer) {
+      props.onScoreChange(props.question.score);
+      props.onClose();
+      alert("Correct!");
+    } else {
+      props.onScoreChange(-props.question.score);
+      props.onClose();
+      alert("Sorry! Wrong answer!");
+    }
+  };
+
+  /* 
+  Reset modal state whenever it is reopened
+  w/o useEffect, once the modal expires once, the modal’s isExpired
+  state will be set to true and will never change back to false, which then
+  when a user selects another question, no modal would appear
+  */
   useEffect(() => {
     if (props.show) {
       setIsExpired(false);
@@ -52,7 +73,7 @@ function JeopardyModal(props) {
               <Button
                 key={answer}
                 className="answer-button"
-                onClick={(e) => props.onAnswerClick(e, answer)}
+                onClick={(e) => onAnswerClick(e, answer)}
 
                 //when you click an answer it will check whether it is correct or not
                 //if it is then add to the score, if not subtract from the score

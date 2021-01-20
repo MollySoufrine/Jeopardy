@@ -1,11 +1,15 @@
 body {
   text-align: center;
-
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background-image: url("https://media.giphy.com/media/1vZaAcldbX8Xh6lMlV/giphy.gif");
+  font-family: "Roboto";
+  background: url("giphy.gif") no-repeat center center fixed;
   background-size: cover;
+}
+.gif-container {
+  background-image: url("giphy.gif") center;
+
+  background-size: cover;
+
+  height: 100%;
 }
 
 .hexagons {
@@ -13,20 +17,26 @@ body {
   background-size: cover;
 }
 
-.ready-banner {
-  background-color: rgba(2, 117, 216, 0.5);
-  background-size: cover;
-  /*
-  opacity:0.5!important;
-  */
+.readyBanner {
+  text-align: center;
 }
-
-.jumbotron {
-  background-image: url("https://image.freepik.com/free-vector/");
-  background-size: cover;
+.player-img {
+  width: 100%;
+  height: auto;
+}
+.intro-tag {
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 #about {
   background-image: url("https://image.freepik.com/free-vector/");
   background-size: cover;
+}
+.buttons-container {
+  margin-top: 5%;
+}
+
+.insertPlayerName {
+  margin: 0.5rem;
 }

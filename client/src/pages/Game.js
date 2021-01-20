@@ -19,22 +19,9 @@ function Game() {
   //store collection of answered questions
   const [answeredQuestions, setAnsweredQuestions] = useState({});
 
-  //onClose function
-  const onClose = (e) => setCurrQuestion(undefined);
-
-  //detect if the answer a user selected is correct
-  const onAnswerClick = (e, answer) => {
-    // console.log(answer === question.correctAnswer);
-    // console.log(answer + "was clicked");
-    if (answer === question.correctAnswer) {
-      setScore((prevScore) => prevScore + question.score);
-      onClose();
-      alert("Correct!");
-    } else {
-      setScore((prevScore) => prevScore - question.score);
-      onClose();
-      alert("Sorry! Wrong answer!");
-    }
+  //handle the change of the score
+  const handleScoreChange = (newScore) => {
+    setScore((prevScore) => prevScore + newScore);
   };
 
   function getUniqueCategories(questions) {
@@ -88,17 +75,17 @@ function Game() {
       </div>
 
       <JeopardyModal
-        onAnswerClick={onAnswerClick}
-        // getScoreForQuestions={(score) => setScore(score)}
-        //this allows you to avoid explicitly tracking the modal show state, we know the modal will always be open if a question is selected
-        //and will always be closed if no question is selected
+        onScoreChange={handleScoreChange}
+        /* 
+        getScoreForQuestions={(score) => setScore(score)}
+        this allows you to avoid explicitly tracking the modal show state, we know the modal will always be open if a question is selected
+        and will always be closed if no question is selected
+        */
         show={currQuestionID != null}
         //"when modal is closed, set game state as 'no question currently selected' "
-        onClose={onClose}
+        onClose={() => setCurrQuestion(undefined)}
         question={question}
       />
-
-      {/* investigate filter or question id...failing because cant get question */}
     </div>
   );
 }
