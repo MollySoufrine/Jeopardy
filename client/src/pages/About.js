@@ -18,12 +18,15 @@ export const About = () => {
         </div>
         <div className="rules-wrapper">
           <h2 className="rules">Rules</h2>
-          <p>
-            1) On The home page input your name in the player name section, then
-            hit start game!
-          </p>
+          <p>1) On The home page hit start game once youre ready!</p>
           <p>2) You can select any question on the board to get started!</p>
           <p>3) Select your answer within 15 seconds!</p>
+          <p>
+            4) Once you have answered all the questions you will be prompted to
+            save your score along with a name!
+            <br />
+            This makes it a little more old school like an arcade game.
+          </p>
         </div>
       </div>
     </div>

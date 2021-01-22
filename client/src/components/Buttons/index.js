@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./index.css";
 
 export const Buttons = () => {
   return (
@@ -13,7 +12,7 @@ export const Buttons = () => {
         Start Game!
       </Link>
 
-      <Link to="/highscores" className="link-btn">
+      <Link to="/scores" className="link-btn">
         Scores
       </Link>
 

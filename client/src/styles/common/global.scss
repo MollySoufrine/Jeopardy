@@ -1,0 +1,26 @@
+/**
+ * Global
+ */
+body {
+  max-width: 50em;
+  height: 40em;
+  margin: 0 auto;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-image: linear-gradient(
+    170deg,
+    #f72585,
+    #b5179e,
+    #7209b7,
+    #560bad,
+    #480ca8,
+    #3a0ca3,
+    #3f37c9,
+    #4361ee,
+    #4895ef,
+    #4cc9f0
+  );
+
+  @media #{$tablet} {
+    background: url("giphy.gif") no-repeat center;
+  }
+}
