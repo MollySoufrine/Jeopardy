@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useReducer } from "react";
+import InputGroup from "react-bootstrap/InputGroup";
+import FormControl from "react-bootstrap/FormControl";
+import Button from "react-bootstrap/Button";
 
 export const Home = () => {
   return (
@@ -10,6 +13,14 @@ export const Home = () => {
         height="370"
         alt="jeopardy tag"
       />
+
+      <div className="player_names_input">
+        <InputGroup className="mb-3">
+          <FormControl />
+
+          <Button>Add New Player</Button>
+        </InputGroup>
+      </div>
     </div>
   );
 };
