@@ -11,7 +11,7 @@ function Game() {
   //this state should be blank or undefined until a user actually selects a question
 
   //state to update score
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState([]);
 
   //store collection of answered questions
   const [answeredQuestions, setAnsweredQuestions] = useState({});
@@ -61,7 +61,15 @@ function Game() {
           />
         ))}
       </div>
-      <div className="card-group">
+      <div className="card-group playerOne">
+        <div className="card">
+          <div className="card-body">
+            Score: {score}
+            <p className="card-text"></p>
+          </div>
+        </div>
+      </div>
+      <div className="card-group playerTwo">
         <div className="card">
           <div className="card-body">
             Score: {score}
