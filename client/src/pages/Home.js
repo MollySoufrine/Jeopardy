@@ -1,24 +1,40 @@
 import React, { useReducer, useState } from "react";
+import questions from "../Json/questions.json";
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_NEW_PLAYER":
       return {
-        ...state,
-        players: [...state.players, { player: action.player }],
+        players: [...state.players, { player: action.player, score: 0 }],
         //return players already there and the new one
+      };
+    case "UPDATE_PLAYER_SCORE":
+      return {
+        //updating an item in array, map over the values, get the value you want to update
+        //otherwise return current player and their score
+        players: state.players.map((p, index) =>
+          index === action.index
+            ? { ...p, score: p.score + questions.question.score } || {
+                ...p,
+                score: p.score - questions.question.score,
+              }
+            : p
+        ),
       };
     default:
       return state;
   }
 };
 
-// const addNewPlayer = (player) =>
-//   dispatch({ type: "ADD_NEW_PLAYER", players: [player] });
+//but I would still need some sort of state to hold the amount of each question and thatd be in game still where it is dispalyed?
+
 export const Home = () => {
-  //state value and function called dispatch
-  const [{ players }, dispatch] = useReducer(reducer, { players: [] });
   const [player, setPlayer] = useState();
+  //state value and function called dispatch
+  const [{ players }, dispatch] = useReducer(reducer, {
+    players: [],
+  });
+
   return (
     <div className="readyBanner">
       <p className="intro-tag">Are you Ready to Play Jeopardy?</p>
@@ -37,8 +53,12 @@ export const Home = () => {
             dispatch({ type: "ADD_NEW_PLAYER", player });
           }}
         >
-          <input value={player} onChange={(e) => setPlayer(e.target.value)} />
+          <input
+            value={player || ""}
+            onChange={(e) => setPlayer(e.target.value)}
+          />
           <pre>{JSON.stringify(players, null, 2)}</pre>
+          {console.log(players)}
           <button>Add New Player:</button>
         </form>
       </div>

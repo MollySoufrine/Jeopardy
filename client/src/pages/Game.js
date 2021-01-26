@@ -6,7 +6,7 @@ import GameOver from "../components/GameOver/GameOver";
 import Column from "../components/Column/Column";
 import JeopardyModal from "../components/Modal/Modal";
 
-function Game() {
+function Game({ players }) {
   const [currQuestionID, setCurrQuestion] = useState(undefined);
   //this state should be blank or undefined until a user actually selects a question
 
@@ -61,27 +61,23 @@ function Game() {
           />
         ))}
       </div>
-      <div className="card-group playerOne">
-        <div className="card">
-          <div className="card-body">
-            Score: {score}
-            <p className="card-text"></p>
+      {console.log(players)}
+      {/* {players.map((p, index) => (
+        <div className="card-group playerOne">
+          <div className="card">
+            <div className="card-body">
+              <div key={index}>{p.player}</div>
+              Score: {score}
+              <p className="card-text"></p>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="card-group playerTwo">
-        <div className="card">
-          <div className="card-body">
-            Score: {score}
-            <p className="card-text"></p>
-          </div>
-        </div>
-      </div>
+      ))} */}
 
       <JeopardyModal
         onScoreChange={handleScoreChange}
         /* 
-        getScoreForQuestions={(score) => setScore(score)}
+       
         this allows you to avoid explicitly tracking the modal show state, we know the modal will always be open if a question is selected
         and will always be closed if no question is selected
         */
