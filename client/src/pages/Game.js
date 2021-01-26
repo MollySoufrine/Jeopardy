@@ -6,7 +6,7 @@ import GameOver from "../components/GameOver/GameOver";
 import Column from "../components/Column/Column";
 import JeopardyModal from "../components/Modal/Modal";
 
-function Game({ players }) {
+function Game({ players, dispatch }) {
   const [currQuestionID, setCurrQuestion] = useState(undefined);
   //this state should be blank or undefined until a user actually selects a question
 
@@ -17,8 +17,8 @@ function Game({ players }) {
   const [answeredQuestions, setAnsweredQuestions] = useState({});
 
   //handle the change of the score
-  const handleScoreChange = (newScore) => {
-    setScore((prevScore) => prevScore + newScore);
+  const handleScoreChange = () => {
+    dispatch("UPDATE_PLAYER_SCORE", p.index, score);
   };
 
   function getUniqueCategories(questions) {

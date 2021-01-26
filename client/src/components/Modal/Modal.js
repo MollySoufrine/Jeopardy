@@ -17,12 +17,13 @@ function JeopardyModal(props) {
     // console.log(answer === question.correctAnswer);
     // console.log(answer + "was clicked");
     if (answer === props.question.correctAnswer) {
-      // props.onScoreChange(props.question.score);
-      props.dispatch({ type: "UPDATE_PLAYER_SCORE", index });
+      props.onScoreChange();
+      // props.dispatch({ type: "UPDATE_PLAYER_SCORE", index });
       props.onClose();
       alert("Correct!");
     } else {
-      props.dispatch({ type: "UPDATE_PLAYER_SCORE", index });
+      props.onScoreChange();
+      // props.dispatch({ type: "UPDATE_PLAYER_SCORE", index });
       props.onClose();
       alert("Sorry! Wrong answer!");
     }
