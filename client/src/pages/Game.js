@@ -6,7 +6,7 @@ import GameOver from "../components/GameOver/GameOver";
 import Column from "../components/Column/Column";
 import JeopardyModal from "../components/Modal/Modal";
 
-function Game({ players, dispatch }) {
+function Game({ player }) {
   const [currQuestionID, setCurrQuestion] = useState(undefined);
   //this state should be blank or undefined until a user actually selects a question
 
@@ -17,9 +17,9 @@ function Game({ players, dispatch }) {
   const [answeredQuestions, setAnsweredQuestions] = useState({});
 
   //handle the change of the score
-  const handleScoreChange = () => {
-    dispatch("UPDATE_PLAYER_SCORE", p.index, score);
-  };
+  // const handleScoreChange = (newScore) => {
+  //   setScore((prevScore) => prevScore + newScore);
+  // };
 
   function getUniqueCategories(questions) {
     //extract categories from list of questions
@@ -61,21 +61,21 @@ function Game({ players, dispatch }) {
           />
         ))}
       </div>
-      {console.log(players)}
-      {/* {players.map((p, index) => (
-        <div className="card-group playerOne">
+      {console.log(player)}
+      {/* {players.map((index) => (
+        <div key={index} className="card-group playerOne">
           <div className="card">
             <div className="card-body">
-              <div key={index}>{p.player}</div>
+              <div>{players.player}</div>
               Score: {score}
               <p className="card-text"></p>
             </div>
           </div>
         </div>
       ))} */}
-
+      {/* {console.log(score)} */}
       <JeopardyModal
-        onScoreChange={handleScoreChange}
+        // onScoreChange={handleScoreChange}
         /* 
        
         this allows you to avoid explicitly tracking the modal show state, we know the modal will always be open if a question is selected

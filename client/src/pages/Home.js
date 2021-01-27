@@ -6,6 +6,7 @@ const reducer = (state, action) => {
     case "ADD_NEW_PLAYER":
       return {
         players: [...state.players, { player: action.player, score: 0 }],
+
         //return players already there and the new one
       };
     case "UPDATE_PLAYER_SCORE":
@@ -13,12 +14,7 @@ const reducer = (state, action) => {
         //updating an item in array, map over the values, get the value you want to update
         //otherwise return current player and their score
         players: state.players.map((p, index) =>
-          index === action.index
-            ? { ...p, score: p.score + questions.question.score } || {
-                ...p,
-                score: p.score - questions.question.score,
-              }
-            : p
+          index === action.index ? { ...p, score: questions.question.score } : p
         ),
       };
     default:
@@ -26,10 +22,11 @@ const reducer = (state, action) => {
   }
 };
 
-//but I would still need some sort of state to hold the amount of each question and thatd be in game still where it is dispalyed?
+//but I would still need some sort of state to hold the amount of each question and
+//thatd be in game still where it is dispalyed?
 
 export const Home = () => {
-  const [player, setPlayer] = useState();
+  // const [player, setPlayer] = useState();
   //state value and function called dispatch
   const [{ players }, dispatch] = useReducer(reducer, {
     players: [],
@@ -50,15 +47,15 @@ export const Home = () => {
           className="form"
           onSubmit={(e) => {
             e.preventDefault();
-            dispatch({ type: "ADD_NEW_PLAYER", player });
+            dispatch({ type: "ADD_NEW_PLAYER" });
           }}
         >
           <input
-            value={player || ""}
-            onChange={(e) => setPlayer(e.target.value)}
+          // value={player || ""}
+          // onChange={(e) => setPlayer(e.target.value)}
           />
           <pre>{JSON.stringify(players, null, 2)}</pre>
-          {console.log(players)}
+          {/* {console.log(player)} */}
           <button>Add New Player:</button>
         </form>
       </div>
