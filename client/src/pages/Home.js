@@ -1,8 +1,8 @@
 import React, { useReducer } from "react";
 import questions from "../Json/questions.json";
 
-const reducer = (state, { action, payload }) => {
-  switch (action) {
+const reducer = (state, { type, payload }) => {
+  switch (type) {
     case "ADD_NEW_PLAYER":
       return {
         players: [...state.players, { player: payload, score: 0 }],
@@ -16,7 +16,7 @@ const reducer = (state, { action, payload }) => {
         //updating an item in array, map over the values, get the value you want to update
         //otherwise return current player and their score
         players: state.players.map((p, index) =>
-          index === action.index ? { ...p, score: questions.question.score } : p
+          index === type.index ? { ...p, score: questions.question.score } : p
         ),
       };
     default:
@@ -58,9 +58,10 @@ export const Home = () => {
             }
           ></input>
           <pre>{JSON.stringify(players, null, 2)}</pre>
-          {console.log(players)}
-          <input type="submit" value="Submit" />
-          {/* <button>Add New Player:</button> */}
+          {console.log(JSON.stringify(players))}
+          <button type="submit" value="Submit">
+            Add New Player
+          </button>
         </form>
       </div>
     </div>
