@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Timer from "../Timer";
 
-function JeopardyModal(props) {
+function JeopardyModal({ dispatch, index, question, show, onClose }) {
   // Flag to change contents of modal after timer expires
   const [isExpired, setIsExpired] = useState(false);
 
@@ -16,15 +16,16 @@ function JeopardyModal(props) {
   const onAnswerClick = (e, answer) => {
     // console.log(answer === question.correctAnswer);
     // console.log(answer + "was clicked");
-    if (answer === props.question.correctAnswer) {
-      props.onScoreChange();
-      // props.dispatch({ type: "UPDATE_PLAYER_SCORE", index });
-      props.onClose();
+    if (answer === question.correctAnswer) {
+      // props.onScoreChange();
+
+      dispatch({ type: "UPDATE_PLAYER_SCORE", index }, question.score);
+      onClose();
       alert("Correct!");
     } else {
-      props.onScoreChange();
+      // props.onScoreChange();
       // props.dispatch({ type: "UPDATE_PLAYER_SCORE", index });
-      props.onClose();
+      onClose();
       alert("Sorry! Wrong answer!");
     }
   };
@@ -36,19 +37,19 @@ function JeopardyModal(props) {
   when a user selects another question, no modal would appear
   */
   useEffect(() => {
-    if (props.show) {
+    if (show) {
       setIsExpired(false);
     }
-  }, [props.show]);
+  }, [show]);
 
-  if (props.question == null) {
+  if (question == null) {
     return null;
   }
 
   return (
     <>
       <Modal
-        show={props.show}
+        show={show}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
@@ -57,21 +58,21 @@ function JeopardyModal(props) {
           <Modal.Header>
             <h5
               className="modal-title"
-              id={"categoryModal-" + props.question.category}
+              id={"categoryModal-" + question.category}
             >
               {" "}
               <Timer onTimeEnd={() => setIsExpired(true)} />
               {isExpired
                 ? "Oops, no more time"
-                : JSON.stringify(props.question.question)}
+                : JSON.stringify(question.question)}
             </h5>
-            <Button className="answer-button" onClick={props.onClose}>
+            <Button className="answer-button" onClick={onClose}>
               Close
             </Button>
           </Modal.Header>
           <Modal.Body>
             {/* close the modal out if user selects correct or wrong answer...will also have this happen if alotted time for question runs out as well */}
-            {props.question.choices.map((answer) => (
+            {question.choices.map((answer) => (
               <Button
                 key={answer}
                 className="answer-button"
