@@ -8,6 +8,7 @@ const reducer = (state, { action, payload }) => {
         players: [...state.players, { player: payload, score: 0 }],
         // ...state,
         // player: payload,
+
         //return players already there and the new one
       };
     case "UPDATE_PLAYER_SCORE":
