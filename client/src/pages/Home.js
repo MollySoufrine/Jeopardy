@@ -1,36 +1,9 @@
-import React, { useReducer } from "react";
-import questions from "../Json/questions.json";
-
-const reducer = (state, { type, payload }) => {
-  switch (type) {
-    case "ADD_NEW_PLAYER":
-      return {
-        players: [...state.players, { player: payload, score: 0 }],
-
-        //return players already there and the new one
-      };
-    case "UPDATE_PLAYER_SCORE":
-      return {
-        //updating an item in array, map over the values, get the value you want to update
-        //otherwise return current player and their score
-        players: state.players.map((p, index) =>
-          index === type.index ? { ...p, score: questions.question.score } : p
-        ),
-      };
-    default:
-      return state;
-  }
-};
-
-//but I would still need some sort of state to hold the amount of each question and
-//thatd be in game still where it is dispalyed?
+import React, { useState, useContext } from "react";
+import { MyContext } from "../App";
 
 export const Home = () => {
-  //state value and function called dispatch
-
-  const [{ players }, dispatch] = useReducer(reducer, {
-    players: [],
-  });
+  const [player, setPlayer] = useState("");
+  const playerContext = useContext(MyContext);
 
   return (
     <div className="readyBanner">
@@ -46,23 +19,24 @@ export const Home = () => {
         <form
           className="form"
           onSubmit={(e) => {
+            playerContext.callDispatch("ADD_NEW_PLAYER");
+            setPlayer("");
             e.preventDefault();
           }}
         >
           <input
-            value={players.players}
-            onChange={(e) => {
-              e.preventDefault();
-              dispatch({ type: "ADD_NEW_PLAYER", payload: e.target.value });
-            }}
+            value={player}
+            onChange={(e) => setPlayer(e.target.value)}
           ></input>
-          <pre>{JSON.stringify(players, null, 2)}</pre>
+
+          {console.log(player)}
 
           <button>Add New Player</button>
           {/* {players.map((player) => (
             <p key={player}></p>
           ))} */}
         </form>
+        <div></div>
       </div>
     </div>
   );
