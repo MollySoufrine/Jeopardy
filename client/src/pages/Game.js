@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 // import { useHistory } from "react-router-dom";
 import questions from "../Json/questions.json";
 import GameOver from "../components/GameOver/GameOver";
 import Column from "../components/Column/Column";
 import JeopardyModal from "../components/Modal/Modal";
+import { MyContext } from "../App";
 
-function Game({ player }) {
+function Game({ players }) {
+  const playerContext = useContext(MyContext);
+
   const [currQuestionID, setCurrQuestion] = useState(undefined);
   //this state should be blank or undefined until a user actually selects a question
 
@@ -60,12 +63,12 @@ function Game({ player }) {
           />
         ))}
       </div>
-      {console.log(player)}
-      {/* {players.map((index) => (
+      {console.log(players)}
+      {/* {players.length.map((index) => (
         <div key={index} className="card-group playerOne">
           <div className="card">
             <div className="card-body">
-              <div>{players.player}</div>
+              <div>{player}</div>
               Score: {score}
               <p className="card-text"></p>
             </div>

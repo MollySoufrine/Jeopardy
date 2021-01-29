@@ -19,7 +19,10 @@ export const Home = () => {
         <form
           className="form"
           onSubmit={(e) => {
-            playerContext.callDispatch("ADD_NEW_PLAYER");
+            playerContext.callDispatch({
+              type: "ADD_NEW_PLAYER",
+              payload: player,
+            });
             setPlayer("");
             e.preventDefault();
           }}
@@ -29,12 +32,10 @@ export const Home = () => {
             onChange={(e) => setPlayer(e.target.value)}
           ></input>
 
-          {console.log(player)}
+          {/* {console.log(player)} */}
 
           <button>Add New Player</button>
-          {/* {players.map((player) => (
-            <p key={player}></p>
-          ))} */}
+          <p>Player Name: {player}</p>
         </form>
         <div></div>
       </div>

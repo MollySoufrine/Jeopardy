@@ -36,7 +36,7 @@ const reducer = (state, { type, payload }) => {
 export const MyContext = createContext();
 
 function App() {
-  const [{ players }, dispatch] = useReducer(reducer, {
+  const [players, dispatch] = useReducer(reducer, {
     players: [],
   });
   console.log(players);

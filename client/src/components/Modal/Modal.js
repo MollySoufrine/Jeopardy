@@ -19,7 +19,6 @@ function JeopardyModal({ dispatch, index, question, show, onClose }) {
     if (answer === question.correctAnswer) {
       // props.onScoreChange();
 
-      dispatch({ type: "UPDATE_PLAYER_SCORE", index }, question.score);
       onClose();
       alert("Correct!");
     } else {
