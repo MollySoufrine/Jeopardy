@@ -6,8 +6,6 @@ const reducer = (state, { type, payload }) => {
     case "ADD_NEW_PLAYER":
       return {
         players: [...state.players, { player: payload, score: 0 }],
-        // ...state,
-        // player: payload,
 
         //return players already there and the new one
       };
@@ -52,16 +50,18 @@ export const Home = () => {
           }}
         >
           <input
-            value={players.player}
-            onChange={(e) =>
-              dispatch({ type: "ADD_NEW_PLAYER", payload: e.target.value })
-            }
+            value={players.players}
+            onChange={(e) => {
+              e.preventDefault();
+              dispatch({ type: "ADD_NEW_PLAYER", payload: e.target.value });
+            }}
           ></input>
           <pre>{JSON.stringify(players, null, 2)}</pre>
-          {console.log(JSON.stringify(players))}
-          <button type="submit" value="Submit">
-            Add New Player
-          </button>
+
+          <button>Add New Player</button>
+          {/* {players.map((player) => (
+            <p key={player}></p>
+          ))} */}
         </form>
       </div>
     </div>
