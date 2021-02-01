@@ -19,9 +19,9 @@ function Game() {
   const [answeredQuestions, setAnsweredQuestions] = useState({});
 
   //handle the change of the score
-  // const handleScoreChange = (newScore) => {
-  //   setScore((prevScore) => prevScore + newScore);
-  // };
+  const handleScoreChange = (newScore) => {
+    setScore((prevScore) => prevScore + newScore);
+  };
 
   function getUniqueCategories(questions) {
     //extract categories from list of questions

@@ -5,7 +5,6 @@ import Game from "./pages/Game";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Highscores } from "./pages/Highscores";
-import questions from "../src/Json/questions.json";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/App.scss";
 
@@ -18,20 +17,26 @@ const reducer = (state, { type, payload }) => {
         //return players already there and the new one
       };
     case "UPDATE_PLAYER_SCORE":
+      const newPlayerState = players.map((player) => {
+        if (player.player === type.player) {
+          return { ...player, score: player.score + type.score };
+        } else {
+          return player;
+        }
+      });
+
       return {
-        //updating an item in array, map over the values, get the value you want to update
-        //otherwise return current player and their score
-        players: state.players.map((p, index) =>
-          index === type.index ? { ...p, score: questions.question.score } : p
-        ),
+        newPlayerState,
       };
     default:
       return state;
   }
 };
-// const [{ players }, dispatch] = useReducer(reducer, {
-//   players: [],
-// });
+
+//handle the change of the score
+// const handleScoreChange = (newScore) => {
+//   setScore((prevScore) => prevScore + newScore);
+// };
 
 export const MyContext = createContext();
 
@@ -41,7 +46,13 @@ function App() {
   });
   console.log(players);
   return (
-    <MyContext.Provider value={{ addPlayer: players, callDispatch: dispatch }}>
+    <MyContext.Provider
+      value={{
+        addPlayer: players,
+        updateScore: players,
+        callDispatch: dispatch,
+      }}
+    >
       <div className="gif-container">
         <Router>
           <div className="app">
