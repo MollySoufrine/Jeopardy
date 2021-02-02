@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-// import { useHistory } from "react-router-dom";
 import questions from "../Json/questions.json";
 import GameOver from "../components/GameOver/GameOver";
 import Column from "../components/Column/Column";
@@ -9,19 +8,13 @@ import { MyContext } from "../App";
 function Game() {
   const { addPlayer } = useContext(MyContext);
 
+  const { updateScore } = useContext(MyContext);
+
   const [currQuestionID, setCurrQuestion] = useState(undefined);
   //this state should be blank or undefined until a user actually selects a question
 
-  //state to update score
-  const [score, setScore] = useState([]);
-
   //store collection of answered questions
   const [answeredQuestions, setAnsweredQuestions] = useState({});
-
-  //handle the change of the score
-  const handleScoreChange = (newScore) => {
-    setScore((prevScore) => prevScore + newScore);
-  };
 
   function getUniqueCategories(questions) {
     //extract categories from list of questions
@@ -31,6 +24,7 @@ function Game() {
 
     return uniqueCat;
   }
+  // console.log(getUniqueCategories());
 
   const isGameOver =
     Object.keys(answeredQuestions).length === Object.keys(questions).length;
@@ -64,13 +58,18 @@ function Game() {
         ))}
       </div>
 
-      {addPlayer.players.map(({ index, player }) => (
-        <div key={index} className="card-group playerOne">
+      {addPlayer.players.map(({ player, score, index }) => (
+        <div key={index} className="card-group player">
           <div className="card">
             <div className="card-body">
-              <div>{player}</div>
-              Score: {score}
-              <p className="card-text"></p>
+              <div>
+                {player}
+                <br />
+                Score:{score}
+                {/* {updateScore.players.map(({ score }) => (
+                    <p>Score:{score}</p>
+                  ))} */}
+              </div>
             </div>
           </div>
         </div>
@@ -79,9 +78,7 @@ function Game() {
       {console.log(addPlayer.players)}
 
       <JeopardyModal
-        // onScoreChange={handleScoreChange}
         /* 
-       
         this allows you to avoid explicitly tracking the modal show state, we know the modal will always be open if a question is selected
         and will always be closed if no question is selected
         */

@@ -6,7 +6,6 @@ import Timer from "../Timer";
 import { MyContext } from "../../App";
 
 function JeopardyModal({ question, show, onClose }) {
-  const [score, setScore] = useState(0);
   const scoreContext = useContext(MyContext);
 
   // Flag to change contents of modal after timer expires
@@ -17,32 +16,30 @@ function JeopardyModal({ question, show, onClose }) {
   keep this in modal, The game only cares about tracking overall score. 
   This keep actual calculation for current question.answer in modal 
   */
-  const onAnswerClick = (answer) => {
-    // console.log(answer === question.correctAnswer);
-    // console.log(answer + "was clicked");
+  const onAnswerClick = (e, answer) => {
     if (answer === question.correctAnswer) {
-      // props.onScoreChange();
-
       scoreContext.callDispatch({
         type: "UPDATE_PLAYER_SCORE",
         payload: {
-          name: "",
-          score: 0,
+          player: "",
+          score: +question.score,
         },
       });
-
       onClose();
       alert("Correct!");
     } else {
-      // props.onScoreChange();
-      // props.dispatch({ type: "UPDATE_PLAYER_SCORE", index });
+      scoreContext.callDispatch({
+        type: "UPDATE_PLAYER_SCORE",
+        payload: {
+          player: "",
+          score: -question.score,
+        },
+      });
       onClose();
       alert("Sorry! Wrong answer!");
     }
   };
-  {
-    console.log(score);
-  }
+
   /* 
   Reset modal state whenever it is reopened
   w/o useEffect, once the modal expires once, the modal’s isExpired

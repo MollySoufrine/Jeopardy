@@ -17,7 +17,7 @@ const reducer = (state, { type, payload }) => {
         //return players already there and the new one
       };
     case "UPDATE_PLAYER_SCORE":
-      const newPlayerState = players.map((player) => {
+      const newPlayerState = state.players.map((player) => {
         if (player.player === type.player) {
           return { ...player, score: player.score + type.score };
         } else {
@@ -44,7 +44,7 @@ function App() {
   const [players, dispatch] = useReducer(reducer, {
     players: [],
   });
-  console.log(players);
+  // console.log(players);
   return (
     <MyContext.Provider
       value={{
