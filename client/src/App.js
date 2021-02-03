@@ -1,4 +1,4 @@
-import React, { useReducer, createContext } from "react";
+import React, { useReducer, createContext, useMemo } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Buttons } from "./components/Buttons/index";
 import Game from "./pages/Game";
@@ -38,21 +38,16 @@ const reducer = (state, { type, payload }) => {
 //   setScore((prevScore) => prevScore + newScore);
 // };
 
-export const MyContext = createContext();
+export const GameContext = createContext();
 
 function App() {
-  const [players, dispatch] = useReducer(reducer, {
+  const [state, dispatch] = useReducer(reducer, {
     players: [],
   });
-  // console.log(players);
-  return (
-    <MyContext.Provider
-      value={{
-        players,
+  const game = useMemo(() => ({ state, dispatch }), [state, dispatch]);
 
-        dispatch,
-      }}
-    >
+  return (
+    <GameContext.Provider value={game}>
       <div className="gif-container">
         <Router>
           <div className="app">
@@ -66,7 +61,7 @@ function App() {
           </div>
         </Router>
       </div>
-    </MyContext.Provider>
+    </GameContext.Provider>
   );
 }
 

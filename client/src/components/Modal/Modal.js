@@ -3,11 +3,11 @@ import React, { useState, useEffect, useContext } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Timer from "../Timer";
-import { MyContext } from "../../App";
+import { GameContext } from "../../App";
 
-function JeopardyModal({ question, show, onClose }) {
-  const scoreContext = useContext(MyContext);
-
+function JeopardyModal({ score, question, show, onClose }) {
+  const scoreContext = useContext(GameContext);
+  // const [score, setScore] = useState();
   // Flag to change contents of modal after timer expires
   const [isExpired, setIsExpired] = useState(false);
 
@@ -18,21 +18,23 @@ function JeopardyModal({ question, show, onClose }) {
   */
   const onAnswerClick = (e, answer) => {
     if (answer === question.correctAnswer) {
-      scoreContext.callDispatch({
+      scoreContext.dispatch({
         type: "UPDATE_PLAYER_SCORE",
         payload: {
           player: "",
-          score: +question.score,
+          score: score,
         },
       });
+      console.log(question.score);
+
       onClose();
       alert("Correct!");
     } else {
-      scoreContext.callDispatch({
+      scoreContext.dispatch({
         type: "UPDATE_PLAYER_SCORE",
         payload: {
           player: "",
-          score: -question.score,
+          score: score,
         },
       });
       onClose();

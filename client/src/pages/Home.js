@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import { MyContext } from "../App";
+import { GameContext } from "../App";
 
 export const Home = () => {
   const [player, setPlayer] = useState("");
-  const playerContext = useContext(MyContext);
+  const playerContext = useContext(GameContext);
 
   return (
     <div className="readyBanner">
