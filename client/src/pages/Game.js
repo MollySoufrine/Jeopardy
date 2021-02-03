@@ -6,9 +6,8 @@ import JeopardyModal from "../components/Modal/Modal";
 import { MyContext } from "../App";
 
 function Game() {
-  const { addPlayer } = useContext(MyContext);
-
-  const { updateScore } = useContext(MyContext);
+  const { players, playerContext } = useContext(MyContext);
+  // const { updateScore } = useContext(MyContext);
 
   const [currQuestionID, setCurrQuestion] = useState(undefined);
   //this state should be blank or undefined until a user actually selects a question
@@ -58,7 +57,7 @@ function Game() {
         ))}
       </div>
 
-      {addPlayer.players.map(({ player, score, index }) => (
+      {players.players.map(({ player, score, index }) => (
         <div key={index} className="card-group player">
           <div className="card">
             <div className="card-body">
@@ -74,8 +73,6 @@ function Game() {
           </div>
         </div>
       ))}
-
-      {console.log(addPlayer.players)}
 
       <JeopardyModal
         /* 

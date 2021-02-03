@@ -19,7 +19,7 @@ export const Home = () => {
         <form
           className="form"
           onSubmit={(e) => {
-            playerContext.callDispatch({
+            playerContext.dispatch({
               type: "ADD_NEW_PLAYER",
               payload: player,
             });

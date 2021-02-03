@@ -48,9 +48,9 @@ function App() {
   return (
     <MyContext.Provider
       value={{
-        addPlayer: players,
-        updateScore: players,
-        callDispatch: dispatch,
+        players,
+
+        dispatch,
       }}
     >
       <div className="gif-container">
