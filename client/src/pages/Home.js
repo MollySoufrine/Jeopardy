@@ -37,7 +37,6 @@ export const Home = () => {
           <button>Add New Player</button>
           <p>Player Name: {player}</p>
         </form>
-        <div></div>
       </div>
     </div>
   );

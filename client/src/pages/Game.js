@@ -6,9 +6,11 @@ import JeopardyModal from "../components/Modal/Modal";
 import { GameContext } from "../App";
 
 function Game() {
+  // console.trace();
   const { state } = useContext(GameContext);
 
   const [currQuestionID, setCurrQuestion] = useState(undefined);
+
   //this state should be blank or undefined until a user actually selects a question
 
   //store collection of answered questions
@@ -17,11 +19,13 @@ function Game() {
   function getUniqueCategories(questions) {
     //extract categories from list of questions
     const categories = questions.map((question) => question.category);
+    console.trace();
     //remove duplicate categories, return result
     const uniqueCat = [...new Set(categories)];
 
     return uniqueCat;
   }
+
   // console.log(getUniqueCategories());
 
   const isGameOver =
@@ -46,25 +50,29 @@ function Game() {
       {isGameOver === false && <Column /> && <JeopardyModal />}
       {isGameOver === true && <GameOver />}
       <div className="game-wrapper">
-        {getUniqueCategories(questions).map((category) => (
-          <Column
-            key={category}
-            category={category}
-            onQuestionChange={handleQuestionChange}
-            answeredQuestions={answeredQuestions}
-          />
-        ))}
+        {getUniqueCategories(questions).map(
+          (category) => (
+            console.trace(),
+            (
+              <Column
+                key={category}
+                category={category}
+                onQuestionChange={handleQuestionChange}
+                answeredQuestions={answeredQuestions}
+              />
+            )
+          )
+        )}
       </div>
 
-      {state.players.map(({ player, score, index }) => (
-        <div key={index} className="card-group player">
+      {state.players.map(({ player, score, id }) => (
+        <div key={id} className="card-group player">
           <div className="card">
             <div className="card-body">
               <div>
                 {player}
                 <br />
                 Score:{score}
-                {/* {updateScore} */}
                 {/* {updateScore.map(({ score }) => (
                   <p>Score:{score}</p>
                 ))} */}

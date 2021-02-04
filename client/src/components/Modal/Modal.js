@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Timer from "../Timer";
 import { GameContext } from "../../App";
 
-function JeopardyModal({ score, question, show, onClose }) {
+function JeopardyModal({ question, show, onClose }) {
   const scoreContext = useContext(GameContext);
   // const [score, setScore] = useState();
   // Flag to change contents of modal after timer expires
@@ -21,11 +21,10 @@ function JeopardyModal({ score, question, show, onClose }) {
       scoreContext.dispatch({
         type: "UPDATE_PLAYER_SCORE",
         payload: {
-          player: "",
-          score: score,
+          newPlayerState: "",
+          score: +question.score,
         },
       });
-      console.log(question.score);
 
       onClose();
       alert("Correct!");
@@ -33,8 +32,8 @@ function JeopardyModal({ score, question, show, onClose }) {
       scoreContext.dispatch({
         type: "UPDATE_PLAYER_SCORE",
         payload: {
-          player: "",
-          score: score,
+          newPlayerState: "",
+          score: -question.score,
         },
       });
       onClose();
@@ -99,7 +98,6 @@ function JeopardyModal({ score, question, show, onClose }) {
               </Button>
             ))}
           </Modal.Body>
-          <Modal.Footer></Modal.Footer>
         </Modal.Dialog>
       </Modal>
     </>
