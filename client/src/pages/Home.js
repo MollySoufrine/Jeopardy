@@ -23,7 +23,9 @@ export const Home = () => {
               type: "ADD_NEW_PLAYER",
               payload: player,
             });
+
             setPlayer("");
+
             e.preventDefault();
           }}
         >
@@ -31,8 +33,6 @@ export const Home = () => {
             value={player}
             onChange={(e) => setPlayer(e.target.value)}
           ></input>
-
-          {/* {console.log(player)} */}
 
           <button>Add New Player</button>
           <p>Player Name: {player}</p>

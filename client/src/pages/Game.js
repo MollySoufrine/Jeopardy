@@ -19,7 +19,7 @@ function Game() {
   function getUniqueCategories(questions) {
     //extract categories from list of questions
     const categories = questions.map((question) => question.category);
-    console.trace();
+    // console.trace();
     //remove duplicate categories, return result
     const uniqueCat = [...new Set(categories)];
 
@@ -50,19 +50,16 @@ function Game() {
       {isGameOver === false && <Column /> && <JeopardyModal />}
       {isGameOver === true && <GameOver />}
       <div className="game-wrapper">
-        {getUniqueCategories(questions).map(
-          (category) => (
-            console.trace(),
-            (
-              <Column
-                key={category}
-                category={category}
-                onQuestionChange={handleQuestionChange}
-                answeredQuestions={answeredQuestions}
-              />
-            )
-          )
-        )}
+        {/* {console.trace()} */}
+
+        {getUniqueCategories(questions).map((category) => (
+          <Column
+            key={category}
+            category={category}
+            onQuestionChange={handleQuestionChange}
+            answeredQuestions={answeredQuestions}
+          />
+        ))}
       </div>
 
       {state.players.map(({ player, score, id }) => (
@@ -73,6 +70,7 @@ function Game() {
                 {player}
                 <br />
                 Score:{score}
+                {/* {console.trace()} */}
                 {/* {updateScore.map(({ score }) => (
                   <p>Score:{score}</p>
                 ))} */}

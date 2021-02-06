@@ -18,26 +18,26 @@ function JeopardyModal({ question, show, onClose }) {
   */
   const onAnswerClick = (e, answer) => {
     if (answer === question.correctAnswer) {
+      onClose();
+      alert("Correct!");
       scoreContext.dispatch({
         type: "UPDATE_PLAYER_SCORE",
         payload: {
-          newPlayerState: "",
+          playerID: 1,
           score: +question.score,
         },
       });
-
-      onClose();
-      alert("Correct!");
+      // console.trace();
     } else {
+      onClose();
+      alert("Sorry! Wrong answer!");
       scoreContext.dispatch({
         type: "UPDATE_PLAYER_SCORE",
         payload: {
-          newPlayerState: "",
+          playerID: 1,
           score: -question.score,
         },
       });
-      onClose();
-      alert("Sorry! Wrong answer!");
     }
   };
 

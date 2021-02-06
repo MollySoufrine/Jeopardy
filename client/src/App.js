@@ -21,19 +21,24 @@ const reducer = (state, { type, payload }) => {
         //return players already there and the new one
       };
     case "UPDATE_PLAYER_SCORE":
-      // const newPlayerState = state.players.map((player) => {
-      //   if (player.id === type.player) {
-      //     return { ...player, score: player.score + type.score };
-      //   } else {
-      //     return player;
-      //   }
-      // });
-
+      const newPlayerState = state.players.map((player) => {
+        debugger;
+        if (player.id === payload.playerID) {
+          return { ...player, score: player.score + payload.score };
+        } else {
+          return player;
+        }
+      });
       return {
-        players: state.players.map((p, id) =>
-          id === type.score ? { ...p, score: questions.question.score } : p
-        ),
+        newPlayerState,
       };
+    // return {
+    //   players: state.players.map((player) =>
+    //     player.id === payload.playerID
+    //       ? { ...player, score: questions.score }
+    //       : player
+    //   ),
+    // };
 
     default:
       return state;
@@ -49,6 +54,7 @@ function App() {
   const game = useMemo(() => ({ state, dispatch }), [state, dispatch]);
   // console.log(state.newPlayerState.score);
   console.log(state.players);
+
   return (
     <GameContext.Provider value={game}>
       <div className="gif-container">
