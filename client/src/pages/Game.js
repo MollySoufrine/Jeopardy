@@ -45,6 +45,10 @@ function Game() {
 
   const question = questions.find((question) => question.id === currQuestionID);
 
+  if (state.players.length === 0) {
+    return <div>Please create a player first.</div>
+  }
+
   return (
     <div className="wrapper">
       {isGameOver === false && <Column /> && <JeopardyModal />}
@@ -62,23 +66,29 @@ function Game() {
         ))}
       </div>
 
-      {state.players.map(({ player, score, id }) => (
-        <div key={id} className="card-group player">
-          <div className="card">
-            <div className="card-body">
-              <div>
-                {player}
-                <br />
+      {state.players.map(({player, score, id}) => {
+        debugger
+        const activePlayer = state.players.find(player => player.id === state.activePlayerId)
+
+        return (
+          <div key={id} className="card-group player">
+            <div className="card">
+              <div className="card-body">
+                <div>
+                  {player}
+                  <br />
                 Score:{score}
-                {/* {console.trace()} */}
-                {/* {updateScore.map(({ score }) => (
+                  {activePlayer.id === id && <span>ACTIVE!</span>}
+                  {/* {console.trace()} */}
+                  {/* {updateScore.map(({ score }) => (
                   <p>Score:{score}</p>
                 ))} */}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
 
       <JeopardyModal
         /* 

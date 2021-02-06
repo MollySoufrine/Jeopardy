@@ -18,27 +18,31 @@ function JeopardyModal({ question, show, onClose }) {
   */
   const onAnswerClick = (e, answer) => {
     if (answer === question.correctAnswer) {
-      onClose();
       alert("Correct!");
       scoreContext.dispatch({
-        type: "UPDATE_PLAYER_SCORE",
+        type: "ON_QUESTION_ANSWERED",
         payload: {
-          playerID: 1,
+          playerID: scoreContext.state.activePlayerId,
           score: +question.score,
         },
       });
       // console.trace();
     } else {
-      onClose();
       alert("Sorry! Wrong answer!");
       scoreContext.dispatch({
-        type: "UPDATE_PLAYER_SCORE",
+        type: "ON_QUESTION_ANSWERED",
         payload: {
-          playerID: 1,
+          playerID: scoreContext.state.activePlayerId,
           score: -question.score,
         },
       });
     }
+
+    scoreContext.dispatch({
+      type: "CHANGE_PLAYER",
+    });
+
+    onClose();
   };
 
   /* 
