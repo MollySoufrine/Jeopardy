@@ -6,7 +6,7 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Highscores } from "./pages/Highscores";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/App.scss";
+import "./index.css";
 
 const reducer = (state, { type, payload }) => {
   switch (type) {

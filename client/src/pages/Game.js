@@ -6,7 +6,6 @@ import JeopardyModal from "../components/Modal/Modal";
 import { GameContext } from "../App";
 
 function Game() {
-  // console.trace();
   const { state } = useContext(GameContext);
 
   const [currQuestionID, setCurrQuestion] = useState(undefined);
@@ -67,13 +66,12 @@ function Game() {
       </div>
 
       {state.players.map(({ player, score, id }) => {
-        debugger;
         const activePlayer = state.players.find(
           (player) => player.id === state.activePlayerId
         );
 
         return (
-          <div key={id} className="card-group player">
+          <div key={id} className="card-player">
             <div className="card">
               <div className="card-body">
                 <div>
