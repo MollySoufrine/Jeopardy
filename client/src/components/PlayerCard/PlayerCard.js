@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-
-import GameContext from "../../App";
+import { GameContext } from "../../App";
 
 function PlayerCard() {
   const { state } = useContext(GameContext);
@@ -13,7 +12,7 @@ function PlayerCard() {
         );
 
         return (
-          <div key={id} className="card-group player">
+          <div key={id} className="card-group-player">
             <div className="card">
               <div className="card-body">
                 <div>
