@@ -36,6 +36,18 @@ export const Home = () => {
 
           <button>Add New Player</button>
           <p>Player Name: {player}</p>
+
+          {playerContext.state.players.map(({ player, id }) => {
+            return (
+              <div key={id} className="card-group player">
+                <div className="card">
+                  <div className="card-body">
+                    <div>{player}</div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </form>
       </div>
     </div>
