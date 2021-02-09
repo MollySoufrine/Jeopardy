@@ -88,3 +88,10 @@ function App() {
 }
 
 export default App;
+
+//display final score, detect when game is over
+//if time = 0 you lose points of qustion, and lose your turn.
+//hide game button once game starts
+//style players card to look better
+//local storage for kepeing track of scores and player names.
+//

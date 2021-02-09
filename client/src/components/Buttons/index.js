@@ -10,7 +10,7 @@ export const Buttons = ({ state }) => {
       </Link>
 
       {state.players.length > 0 && (
-        <Link to="/game" className="link-btn">
+        <Link to="/game" className="link-btn btn-game">
           Start Game!
         </Link>
       )}

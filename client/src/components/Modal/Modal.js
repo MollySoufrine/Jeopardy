@@ -7,7 +7,7 @@ import { GameContext } from "../../App";
 
 function JeopardyModal({ question, show, onClose }) {
   const scoreContext = useContext(GameContext);
-  // const [score, setScore] = useState();
+
   // Flag to change contents of modal after timer expires
   const [isExpired, setIsExpired] = useState(false);
 
@@ -16,6 +16,7 @@ function JeopardyModal({ question, show, onClose }) {
   keep this in modal, The game only cares about tracking overall score. 
   This keep actual calculation for current question.answer in modal 
   */
+
   const onAnswerClick = (e, answer) => {
     if (answer === question.correctAnswer) {
       alert("Correct!");
@@ -26,7 +27,6 @@ function JeopardyModal({ question, show, onClose }) {
           score: +question.score,
         },
       });
-      // console.trace();
     } else {
       alert("Sorry! Wrong answer!");
       scoreContext.dispatch({
@@ -77,9 +77,7 @@ function JeopardyModal({ question, show, onClose }) {
             >
               {" "}
               <Timer onTimeEnd={() => setIsExpired(true)} />
-              {isExpired
-                ? "Oops, no more time"
-                : JSON.stringify(question.question)}
+              {isExpired ? onClose() : JSON.stringify(question.question)}
             </h5>
             <Button className="answer-button" onClick={onClose}>
               Close

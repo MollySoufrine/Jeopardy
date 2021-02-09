@@ -45,8 +45,9 @@ function Game() {
 
   const question = questions.find((question) => question.id === currQuestionID);
 
+  //do not display game page until a user is created
   if (state.players.length === 0) {
-    return <div>Please create a player first.</div>;
+    return <div className="no-players">Please create a player first.</div>;
   }
 
   return (

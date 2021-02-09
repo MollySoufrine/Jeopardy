@@ -10,6 +10,7 @@ export default function Timer(props) {
     // console.log(playerName);
     if (timeLeft === 0) {
       props.onTimeEnd();
+
       return;
     }
 
