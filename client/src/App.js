@@ -5,6 +5,7 @@ import Game from "./pages/Game";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Highscores } from "./pages/Highscores";
+import questions from "../../client/src/Json/questions.json";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
@@ -47,6 +48,9 @@ const reducer = (state, { type, payload }) => {
           state.players[(currentPlayerIndex + 1) % state.players.length].id,
       };
 
+    case "ANSWERED_QUESTIONS":
+      const currQuestionIndex = questions.findIndex(question);
+
     default:
       throw Error("error occured");
     //set default to throw an error
@@ -58,7 +62,7 @@ export const GameContext = createContext();
 const INITIAL_STATE = {
   players: [],
   activePlayerId: null,
-  answereQuestions: {}, // FODO: move question state here
+  answeredQuestions: {}, // TODO: move question state here
 };
 
 function App() {
@@ -91,7 +95,7 @@ export default App;
 
 //display final score, detect when game is over
 //if time = 0 you lose points of qustion, and lose your turn.
-//hide game button once game starts
+
 //style players card to look better
 //local storage for kepeing track of scores and player names.
 //
