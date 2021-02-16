@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import questions from "../../Json/questions.json";
 import QuestionButton from "../QuestionButton/QuestionButton";
 import Button from "react-bootstrap/Button";
+import { GameContext } from "../../App";
 
 //column needs to know about question button & modal
 //column needs to pass score info to Game.js
@@ -9,6 +10,7 @@ import Button from "react-bootstrap/Button";
 function Column({ onQuestionChange, category, answeredQuestions }) {
   // const handleQuestionChange = (questionID) =>
   //   props.onQuestionChange(questionID);
+  const answeredQuestionContext = useContext(GameContext);
 
   return (
     <>

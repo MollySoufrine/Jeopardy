@@ -23,10 +23,11 @@ const reducer = (state, { type, payload }) => {
         activePlayerId: state.activePlayerId ?? newPlayer.id,
         //always use ...state, at the beginnning incase you have multiple objects in initial state
         //return players already there and the new one
+        // ?? is similar to || but a newer version
       };
     case "ON_QUESTION_ANSWERED":
       const newPlayerState = state.players.map((player) => {
-        debugger;
+        // debugger;
         if (player.id === payload.playerID) {
           return { ...player, score: player.score + payload.score };
         } else {
@@ -48,8 +49,22 @@ const reducer = (state, { type, payload }) => {
           state.players[(currentPlayerIndex + 1) % state.players.length].id,
       };
 
-    case "ANSWERED_QUESTIONS":
-      const currQuestionIndex = questions.findIndex(question);
+    case "DISABLE_ANSWERED_QUESTIONS":
+      const currentQuestionIndex = state.answeredQuestions.findIndex(
+        (question) => question.id === state.activeQuestionId
+      );
+
+      return {
+        ...state,
+        activeQuestionId:
+          state.answeredQuestions[
+            (currentQuestionIndex + 1) % state.answeredQuestions.length
+          ].id,
+      };
+
+    // setAnsweredQuestions((prevAnsweredQuestions) => ({
+    // ...prevAnsweredQuestions,
+    // [questionID]: true,
 
     default:
       throw Error("error occured");
@@ -63,6 +78,7 @@ const INITIAL_STATE = {
   players: [],
   activePlayerId: null,
   answeredQuestions: {}, // TODO: move question state here
+  activeQuestionId: null,
 };
 
 function App() {
