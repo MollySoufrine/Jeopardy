@@ -49,17 +49,15 @@ const reducer = (state, { type, payload }) => {
           state.players[(currentPlayerIndex + 1) % state.players.length].id,
       };
 
-    case "DISABLE_ANSWERED_QUESTIONS":
-      const currentQuestionIndex = state.answeredQuestions.findIndex(
-        (question) => question.id === state.activeQuestionId
-      );
-
+    case "DISABLE_QUESTION":
+      const disabledQuestion = {
+        question: payload,
+      };
+      console.log(disabledQuestion);
       return {
         ...state,
-        activeQuestionId:
-          state.answeredQuestions[
-            (currentQuestionIndex + 1) % state.answeredQuestions.length
-          ].id,
+        answeredQuestions: { ...state.answeredQuestions, disabledQuestion },
+        disabledQuestionId: state.disabledQuestionId ?? disabledQuestion.id,
       };
 
     // setAnsweredQuestions((prevAnsweredQuestions) => ({
@@ -78,7 +76,7 @@ const INITIAL_STATE = {
   players: [],
   activePlayerId: null,
   answeredQuestions: {}, // TODO: move question state here
-  activeQuestionId: null,
+  disabledQuestionId: null,
 };
 
 function App() {

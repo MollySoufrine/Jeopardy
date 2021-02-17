@@ -1,17 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import questions from "../../Json/questions.json";
 import QuestionButton from "../QuestionButton/QuestionButton";
 import Button from "react-bootstrap/Button";
-import { GameContext } from "../../App";
 
 //column needs to know about question button & modal
 //column needs to pass score info to Game.js
 
-function Column({ onQuestionChange, category, answeredQuestions }) {
-  // const handleQuestionChange = (questionID) =>
-  //   props.onQuestionChange(questionID);
-  const answeredQuestionContext = useContext(GameContext);
-
+function Column({ onQuestionChange, category }) {
   return (
     <>
       <Button className="button-category">{category}</Button>
@@ -19,10 +14,11 @@ function Column({ onQuestionChange, category, answeredQuestions }) {
       generate a button with the score as the face*/}
 
       {questions
+
         .filter((question) => question.category === category)
         .map((question) => (
           <QuestionButton
-            disabled={answeredQuestions[question.id]}
+            // disabled={answeredQuestions[question.id]}
             key={question.id}
             question={question}
             onQuestionChange={onQuestionChange}

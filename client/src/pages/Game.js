@@ -8,6 +8,7 @@ import PlayerCard from "../components/PlayerCard/PlayerCard";
 
 function Game() {
   const { state } = useContext(GameContext);
+  const disableQuestionContext = useContext(GameContext);
 
   const [currQuestionID, setCurrQuestion] = useState(undefined);
 
@@ -34,13 +35,19 @@ function Game() {
   //when a user selects a question, display the question by the question ID
   const handleQuestionChange = function (questionID) {
     setCurrQuestion(questionID);
-
     // Update collection of questions that have been answered
     setAnsweredQuestions((prevAnsweredQuestions) => ({
       ...prevAnsweredQuestions,
       [questionID]: true,
       //if prevAnsweredQuestion is this questionID, add it to the object
     }));
+
+    disableQuestionContext.dispatch({
+      type: "DISABLE_QUESTION",
+      payload: {
+        questionID: disableQuestionContext.state.disabledQuestionId,
+      },
+    });
   };
 
   const question = questions.find((question) => question.id === currQuestionID);
