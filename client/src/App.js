@@ -50,19 +50,31 @@ const reducer = (state, { type, payload }) => {
       };
 
     case "DISABLE_QUESTION":
-      const disabledQuestion = {
+      /*For every question, you will check
+      the answered questions state to see if it is valid or not.*/
+      const disableQuestion = {
         question: payload,
-      };
-      console.log(disabledQuestion);
-      return {
-        ...state,
-        answeredQuestions: { ...state.answeredQuestions, disabledQuestion },
-        disabledQuestionId: state.disabledQuestionId ?? disabledQuestion.id,
+        // disabled: false,
       };
 
-    // setAnsweredQuestions((prevAnsweredQuestions) => ({
-    // ...prevAnsweredQuestions,
-    // [questionID]: true,
+      //returns correct question.id
+
+      //add selected question to disabled question state
+      console.log({
+        ...state,
+        disabledQuestions: { ...state.disabledQuestions, disableQuestion },
+      });
+
+      return {
+        ...state,
+        disabledQuestions: { ...state.disabledQuestions, disableQuestion },
+      };
+
+    // return {
+    //   ...state,
+    //   answeredQuestions: { ...state.answeredQuestions, disableQuestion },
+    //   disabledQuestionId: disableQuestion,
+    // };
 
     default:
       throw Error("error occured");
@@ -75,8 +87,7 @@ export const GameContext = createContext();
 const INITIAL_STATE = {
   players: [],
   activePlayerId: null,
-  answeredQuestions: {}, // TODO: move question state here
-  disabledQuestionId: null,
+  disabledQuestions: {}, // TODO: move question state here
 };
 
 function App() {

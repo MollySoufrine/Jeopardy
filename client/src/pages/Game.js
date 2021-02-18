@@ -45,7 +45,7 @@ function Game() {
     disableQuestionContext.dispatch({
       type: "DISABLE_QUESTION",
       payload: {
-        questionID: disableQuestionContext.state.disabledQuestionId,
+        questionid: questionID,
       },
     });
   };
