@@ -8,7 +8,6 @@ import PlayerCard from "../components/PlayerCard/PlayerCard";
 
 function Game() {
   const { state } = useContext(GameContext);
-  const disableQuestionContext = useContext(GameContext);
 
   const [currQuestionID, setCurrQuestion] = useState(undefined);
 
@@ -41,16 +40,10 @@ function Game() {
       [questionID]: true,
       //if prevAnsweredQuestion is this questionID, add it to the object
     }));
-
-    disableQuestionContext.dispatch({
-      type: "DISABLE_QUESTION",
-      payload: {
-        questionid: questionID,
-      },
-    });
   };
 
   const question = questions.find((question) => question.id === currQuestionID);
+  console.log(currQuestionID);
 
   //do not display game page until a user is created
   if (state.players.length === 0) {

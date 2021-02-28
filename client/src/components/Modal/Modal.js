@@ -7,6 +7,7 @@ import { GameContext } from "../../App";
 
 function JeopardyModal({ question, show, onClose }) {
   const scoreContext = useContext(GameContext);
+  const disableQuestionContext = useContext(GameContext);
 
   // Flag to change contents of modal after timer expires
   const [isExpired, setIsExpired] = useState(false);
@@ -27,6 +28,10 @@ function JeopardyModal({ question, show, onClose }) {
           score: +question.score,
         },
       });
+
+      /*question should be disabled after someone answers it...dispatch for adding 
+      question to disabled obj should potentially go here
+      */
     } else {
       alert("Sorry! Wrong answer!");
       scoreContext.dispatch({

@@ -34,6 +34,7 @@ const reducer = (state, { type, payload }) => {
           return player;
         }
       });
+
       return {
         ...state,
         players: newPlayerState,
@@ -56,25 +57,14 @@ const reducer = (state, { type, payload }) => {
         question: payload,
         // disabled: false,
       };
-
-      //returns correct question.id
-
-      //add selected question to disabled question state
-      console.log({
-        ...state,
-        disabledQuestions: { ...state.disabledQuestions, disableQuestion },
-      });
+      // if (question.id === payload.quesionid) {
+      // }
 
       return {
         ...state,
         disabledQuestions: { ...state.disabledQuestions, disableQuestion },
+        activeQuestionId: state.activeQuestionId ?? disableQuestion.id,
       };
-
-    // return {
-    //   ...state,
-    //   answeredQuestions: { ...state.answeredQuestions, disableQuestion },
-    //   disabledQuestionId: disableQuestion,
-    // };
 
     default:
       throw Error("error occured");
@@ -88,6 +78,7 @@ const INITIAL_STATE = {
   players: [],
   activePlayerId: null,
   disabledQuestions: {}, // TODO: move question state here
+  activeQuestionId: null,
 };
 
 function App() {

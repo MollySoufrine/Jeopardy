@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 //column needs to know about question button & modal
 //column needs to pass score info to Game.js
 
-function Column({ onQuestionChange, category, disableQuestionContext }) {
+function Column({ onQuestionChange, category }) {
   return (
     <>
       <Button className="button-category">{category}</Button>
