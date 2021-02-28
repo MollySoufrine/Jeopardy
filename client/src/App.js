@@ -55,15 +55,13 @@ const reducer = (state, { type, payload }) => {
       the answered questions state to see if it is valid or not.*/
       const disableQuestion = {
         question: payload,
-        // disabled: false,
       };
-      // if (question.id === payload.quesionid) {
-      // }
+      console.log(disableQuestion);
 
       return {
         ...state,
-        disabledQuestions: { ...state.disabledQuestions, disableQuestion },
-        activeQuestionId: state.activeQuestionId ?? disableQuestion.id,
+
+        disabledQuestions: [...state.disabledQuestions, disableQuestion],
       };
 
     default:
@@ -77,17 +75,13 @@ export const GameContext = createContext();
 const INITIAL_STATE = {
   players: [],
   activePlayerId: null,
-  disabledQuestions: {}, // TODO: move question state here
-  activeQuestionId: null,
+  disabledQuestions: [], // TODO: move question state here
 };
 
 function App() {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
   //always assign an initial state
   const game = useMemo(() => ({ state, dispatch }), [state, dispatch]);
-
-  console.log(state.players);
-
   return (
     <GameContext.Provider value={game}>
       <div className="gif-container">
@@ -108,10 +102,3 @@ function App() {
 }
 
 export default App;
-
-//display final score, detect when game is over
-//if time = 0 you lose points of qustion, and lose your turn.
-
-//style players card to look better
-//local storage for kepeing track of scores and player names.
-//

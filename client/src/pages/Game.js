@@ -8,6 +8,7 @@ import PlayerCard from "../components/PlayerCard/PlayerCard";
 
 function Game() {
   const { state } = useContext(GameContext);
+  console.log(state.disabledQuestions);
 
   const [currQuestionID, setCurrQuestion] = useState(undefined);
 
@@ -43,7 +44,6 @@ function Game() {
   };
 
   const question = questions.find((question) => question.id === currQuestionID);
-  console.log(currQuestionID);
 
   //do not display game page until a user is created
   if (state.players.length === 0) {

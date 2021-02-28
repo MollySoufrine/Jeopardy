@@ -1,24 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
+import { GameContext } from "../../App";
 
-function QuestionButton(props) {
+function QuestionButton({ question, onQuestionChange, disabled }) {
+  const { state } = useContext(GameContext);
+
   const handleClick = () => {
-    props.onQuestionChange(props.question.id);
+    if (!state.disabledQuestions.includes(question.id)) {
+      console.log(question.id);
+      //if question is not disabled, show question
+      onQuestionChange(question.id);
+    } else {
+      alert("this question is disabled");
+    }
   };
 
   return (
-    <Button
-      disabled={props.disabled}
-      className="game-button"
-      // key={props.question.id}
-      onClick={handleClick}
-    >
+    <Button disabled={disabled} className="game-button" onClick={handleClick}>
       {/* {console.log(question)}
       {console.log(choices)} */}
       {/* make a component for each catrgory, filter list of questions down
             {/* make a component for each catrgory, filter list of questions down
               to specific category, print title in first row */}
-      {props.question.score}
+      {question.score}
     </Button>
   );
 }

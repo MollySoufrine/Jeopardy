@@ -42,7 +42,12 @@ function JeopardyModal({ question, show, onClose }) {
         },
       });
     }
-
+    disableQuestionContext.dispatch({
+      type: "DISABLE_QUESTION",
+      payload: {
+        question: question.id,
+      },
+    });
     scoreContext.dispatch({
       type: "CHANGE_PLAYER",
     });
