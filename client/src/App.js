@@ -53,15 +53,11 @@ const reducer = (state, { type, payload }) => {
     case "DISABLE_QUESTION":
       /*For every question, you will check
       the answered questions state to see if it is valid or not.*/
-      const disableQuestion = {
-        question: payload,
-      };
-      console.log(disableQuestion);
 
+      debugger;
       return {
         ...state,
-
-        disabledQuestions: [...state.disabledQuestions, disableQuestion],
+        disabledQuestions: [...state.disabledQuestions, payload.question],
       };
 
     default:
@@ -80,6 +76,7 @@ const INITIAL_STATE = {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
+  debugger;
   //always assign an initial state
   const game = useMemo(() => ({ state, dispatch }), [state, dispatch]);
   return (
