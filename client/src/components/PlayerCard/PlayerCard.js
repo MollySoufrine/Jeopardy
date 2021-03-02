@@ -16,12 +16,12 @@ function PlayerCard() {
           <div key={id} className="card-container">
             <div className="card">
               <div className="card-body">
-                <div>
-                  {player}
-                  <br />
-                  Score:{score}
-                  {activePlayer.id === id && <span> ACTIVE!</span>}
-                </div>
+                {player}
+                <br />
+                Score:{score}{" "}
+                {activePlayer.id === id && (
+                  <span className="active-dot"> </span>
+                )}
               </div>
             </div>
           </div>

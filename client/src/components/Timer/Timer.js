@@ -4,7 +4,7 @@ export default function Timer(props) {
   // remember -- state changes in react don't happen immediately
   // they are only applied after a rerender
   // Initial time can be passed as a prop. For now we hardcode 10s.
-  const [timeLeft, setTimeLeft] = useState(5);
+  const [timeLeft, setTimeLeft] = useState(60);
 
   useEffect(() => {
     // console.log(playerName);
