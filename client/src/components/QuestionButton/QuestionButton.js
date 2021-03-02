@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
-import Button from "react-bootstrap/Button";
+
 import { GameContext } from "../../App";
+import "./index.css";
 
 function QuestionButton({ question, onQuestionChange }) {
   const { state } = useContext(GameContext);
@@ -12,13 +13,13 @@ function QuestionButton({ question, onQuestionChange }) {
   };
 
   return (
-    <Button
+    <button
       disabled={state.disabledQuestions.includes(question.id)}
       className="game-button"
       onClick={handleClick}
     >
       {question.score}
-    </Button>
+    </button>
   );
 }
 export default QuestionButton;

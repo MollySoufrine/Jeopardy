@@ -1,7 +1,8 @@
 import React from "react";
 import questions from "../../Json/questions.json";
 import QuestionButton from "../QuestionButton/QuestionButton";
-import Button from "react-bootstrap/Button";
+
+import "./index.css";
 
 //column needs to know about question button & modal
 //column needs to pass score info to Game.js
@@ -9,13 +10,14 @@ import Button from "react-bootstrap/Button";
 function Column({ onQuestionChange, category }) {
   return (
     <>
-      <Button className="button-category">{category}</Button>
+      <button className="button-category">{category}</button>
       {/* /* mapping through the json file ot list out the info per question and
       generate a button with the score as the face*/}
 
       {questions
 
         .filter((question) => question.category === category)
+
         .map((question) => (
           <QuestionButton
             key={question.id}

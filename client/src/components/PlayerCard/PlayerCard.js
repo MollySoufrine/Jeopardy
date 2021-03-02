@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { GameContext } from "../../App";
+import "./index.css";
 
 function PlayerCard() {
   const { state } = useContext(GameContext);
@@ -12,14 +13,14 @@ function PlayerCard() {
         );
 
         return (
-          <div key={id} className="card-group-player">
+          <div key={id} className="card-container">
             <div className="card">
               <div className="card-body">
                 <div>
                   {player}
                   <br />
                   Score:{score}
-                  {activePlayer.id === id && <span>ACTIVE!</span>}
+                  {activePlayer.id === id && <span> ACTIVE!</span>}
                 </div>
               </div>
             </div>

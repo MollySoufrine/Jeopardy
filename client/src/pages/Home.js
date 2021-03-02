@@ -31,11 +31,12 @@ export const Home = () => {
           }}
         >
           <input
+            className="input"
             value={player}
             onChange={(e) => setPlayer(e.target.value)}
           ></input>
 
-          <button>Add New Player</button>
+          <button className="input-btn">Add New Player</button>
           <p>Player Name: {player}</p>
           <PlayerCard />
         </form>

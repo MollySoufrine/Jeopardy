@@ -5,13 +5,14 @@
   max-width: 100%;
 }
 .link-btn {
+  font-size: 2rem;
   color: #fcfff7;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   padding: 0.2rem;
   margin: 0.3rem;
   text-decoration: underline;
 }
 .link-btn:hover {
-  background-color: rgb(141, 141, 231);
+  background-color: rgb(160, 160, 255);
   color: #292f36;
 }

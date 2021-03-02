@@ -5,8 +5,8 @@ import Game from "./pages/Game";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Highscores } from "./pages/Highscores";
-import questions from "../../client/src/Json/questions.json";
-import "bootstrap/dist/css/bootstrap.min.css";
+
+// import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 const reducer = (state, { type, payload }) => {

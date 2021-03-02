@@ -1,9 +1,10 @@
-//Modal needs to know about QuestionButton and/or get data from question button
+//div needs to know about QuestionButton and/or get data from question button
 import React, { useState, useEffect, useContext } from "react";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
+// import div from "react-bootstrap/div";
+// import Button from "react-bootstrap/Button";
 import Timer from "../Timer";
 import { GameContext } from "../../App";
+import "./index.css";
 
 function JeopardyModal({ question, show, onClose }) {
   const scoreContext = useContext(GameContext);
@@ -42,6 +43,7 @@ function JeopardyModal({ question, show, onClose }) {
         },
       });
     }
+    debugger;
     disableQuestionContext.dispatch({
       type: "DISABLE_QUESTION",
       payload: {
@@ -73,14 +75,15 @@ function JeopardyModal({ question, show, onClose }) {
 
   return (
     <>
-      <Modal
+      <div
+        className="modal-container"
         show={show}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Dialog>
-          <Modal.Header>
+        <div className="modal-main-section">
+          <div className="modal-header">
             <h5
               className="modal-title"
               id={"categoryModal-" + question.category}
@@ -89,14 +92,14 @@ function JeopardyModal({ question, show, onClose }) {
               <Timer onTimeEnd={() => setIsExpired(true)} />
               {isExpired ? onClose() : JSON.stringify(question.question)}
             </h5>
-            <Button className="answer-button" onClick={onClose}>
+            <button className="modal-btn" onClick={onClose}>
               Close
-            </Button>
-          </Modal.Header>
-          <Modal.Body>
+            </button>
+          </div>
+          <div className="modal-body">
             {/* close the modal out if user selects correct or wrong answer...will also have this happen if alotted time for question runs out as well */}
             {question.choices.map((answer) => (
-              <Button
+              <button
                 key={answer}
                 className="answer-button"
                 onClick={(e) => onAnswerClick(e, answer)}
@@ -107,11 +110,11 @@ function JeopardyModal({ question, show, onClose }) {
               */
               >
                 {answer}
-              </Button>
+              </button>
             ))}
-          </Modal.Body>
-        </Modal.Dialog>
-      </Modal>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
