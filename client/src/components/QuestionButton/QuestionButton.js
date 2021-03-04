@@ -7,8 +7,6 @@ function QuestionButton({ question, onQuestionChange }) {
   const { state } = useContext(GameContext);
 
   const handleClick = () => {
-    debugger;
-
     onQuestionChange(question.id);
   };
 

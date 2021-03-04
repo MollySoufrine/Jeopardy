@@ -60,3 +60,8 @@ body {
   border: none;
   border-radius: 0.25rem;
 }
+.game-over-btn {
+  width: 8rem;
+  text-transform: capitalize;
+  font-size: 4rem;
+}

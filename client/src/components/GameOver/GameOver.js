@@ -1,7 +1,4 @@
 import React from "react";
-// import { useHistory } from "react-router-dom";
-
-import Button from "react-bootstrap/Button";
 
 function GameOver() {
   return (
@@ -19,9 +16,9 @@ function GameOver() {
         type="input"
         placeholder=" enter player name"
       ></input>
-      <Button className="submit" type="submit">
+      <button className="submit" type="submit">
         submit
-      </Button>
+      </button>
     </div>
   );
 }

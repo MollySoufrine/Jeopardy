@@ -1,4 +1,5 @@
 import React from "react";
+import GameOver from "../components/GameOver/GameOver";
 
 export const Highscores = () => {
   // const playerName = localStorage.getItem("playername");
@@ -8,6 +9,7 @@ export const Highscores = () => {
 
   return (
     <div className="highscores">
+      <GameOver />
       <div>
         <h1>High Scores</h1>
         <li>

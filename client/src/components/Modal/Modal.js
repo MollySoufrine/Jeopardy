@@ -43,7 +43,7 @@ function JeopardyModal({ question, show, onClose }) {
         },
       });
     }
-    debugger;
+
     questionContext.dispatch({
       type: "ON_QUESTION_ANSWERED",
       payload: {

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import questions from "../Json/questions.json";
-import GameOver from "../components/GameOver/GameOver";
+import { useHistory } from "react-router-dom";
 import Column from "../components/Column/Column";
 import JeopardyModal from "../components/Modal/Modal";
 import { GameContext } from "../App";
@@ -8,12 +8,21 @@ import PlayerCard from "../components/PlayerCard/PlayerCard";
 
 function Game() {
   const { state } = useContext(GameContext);
-
-  console.log(state.disabledQuestions);
-
+  const history = useHistory();
   const [currQuestionID, setCurrQuestion] = useState(undefined);
   //this state should be blank or undefined until a user actually selects a question
-
+  function isGameOver() {
+    if (state.disabledQuestions.length === questions.length * 2) {
+      return (
+        <button
+          className="game-over-btn"
+          onClick={() => history.push("/scores")}
+        >
+          GAME OVER
+        </button>
+      );
+    }
+  }
   function getUniqueCategories(questions) {
     //extract categories from list of questions
     const categories = questions.map((question) => question.category);
@@ -38,11 +47,7 @@ function Game() {
 
   return (
     <div className="wrapper">
-      {/* {isGameOver === false && <Column /> && <JeopardyModal />}
-      {isGameOver === true && <GameOver />} */}
       <div className="game-wrapper">
-        {/* {console.trace()} */}
-
         {getUniqueCategories(questions).map((category) => (
           <Column
             key={category}
@@ -63,6 +68,7 @@ function Game() {
         onClose={() => setCurrQuestion(undefined)}
         question={question}
       />
+      {isGameOver()}
     </div>
   );
 }
