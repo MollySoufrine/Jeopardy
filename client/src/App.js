@@ -38,6 +38,7 @@ const reducer = (state, { type, payload }) => {
       return {
         ...state,
         players: newPlayerState,
+        disabledQuestions: [...state.disabledQuestions, payload.question],
       };
     case "CHANGE_PLAYER":
       const currentPlayerIndex = state.players.findIndex(
@@ -50,15 +51,14 @@ const reducer = (state, { type, payload }) => {
           state.players[(currentPlayerIndex + 1) % state.players.length].id,
       };
 
-    case "DISABLE_QUESTION":
-      /*For every question, you will check
+    // case "DISABLE_QUESTION":
+    /*For every question, you will check
       the answered questions state to see if it is valid or not.*/
 
-      debugger;
-      return {
-        ...state,
-        disabledQuestions: [...state.disabledQuestions, payload.question],
-      };
+    // return {
+    //   ...state,
+    //   disabledQuestions: [...state.disabledQuestions, payload.question],
+    // };
 
     default:
       throw Error("error occured");

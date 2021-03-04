@@ -7,8 +7,8 @@ import { GameContext } from "../../App";
 import "./index.css";
 
 function JeopardyModal({ question, show, onClose }) {
-  const scoreContext = useContext(GameContext);
-  const disableQuestionContext = useContext(GameContext);
+  const questionContext = useContext(GameContext);
+  // const disableQuestionContext = useContext(GameContext);
 
   // Flag to change contents of modal after timer expires
   const [isExpired, setIsExpired] = useState(false);
@@ -22,10 +22,10 @@ function JeopardyModal({ question, show, onClose }) {
   const onAnswerClick = (e, answer) => {
     if (answer === question.correctAnswer) {
       alert("Correct!");
-      scoreContext.dispatch({
+      questionContext.dispatch({
         type: "ON_QUESTION_ANSWERED",
         payload: {
-          playerID: scoreContext.state.activePlayerId,
+          playerID: questionContext.state.activePlayerId,
           score: +question.score,
         },
       });
@@ -35,22 +35,22 @@ function JeopardyModal({ question, show, onClose }) {
       */
     } else {
       alert("Sorry! Wrong answer!");
-      scoreContext.dispatch({
+      questionContext.dispatch({
         type: "ON_QUESTION_ANSWERED",
         payload: {
-          playerID: scoreContext.state.activePlayerId,
+          playerID: questionContext.state.activePlayerId,
           score: -question.score,
         },
       });
     }
     debugger;
-    disableQuestionContext.dispatch({
-      type: "DISABLE_QUESTION",
+    questionContext.dispatch({
+      type: "ON_QUESTION_ANSWERED",
       payload: {
         question: question.id,
       },
     });
-    scoreContext.dispatch({
+    questionContext.dispatch({
       type: "CHANGE_PLAYER",
     });
 
